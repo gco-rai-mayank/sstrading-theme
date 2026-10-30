@@ -106,8 +106,8 @@ p{margin:0 0 1em}
 .qform-note{font-size:.82rem;color:var(--ink-3);margin:0}
 
 /* ---------- Sections ---------- */
-.section{padding:84px 0}
-.section-alt{background:var(--bg-2)}
+.band,main > section.section{padding:84px 0}   /* section.section: themes pasted before the rename */
+.band-alt,.section-alt{background:var(--bg-2)}
 .section-head{max-width:700px;margin:0 0 40px}
 .section-head.center{text-align:center;margin-left:auto;margin-right:auto}
 .section-head .eyebrow{color:var(--amber-ink)}
@@ -220,7 +220,6 @@ p{margin:0 0 1em}
 .crumbs{font-size:.9rem;margin-bottom:10px}
 .crumbs a{color:var(--amber)}
 .blog-area{padding-top:48px;padding-bottom:72px}
-.blog-area .section{padding:0}
 .post-body{font-size:1.05rem}
 .post-body h2{font-size:1.9rem;margin-top:1.4em}
 .post-body h3{margin-top:1.2em}
@@ -364,7 +363,7 @@ p{margin:0 0 1em}
   .product-aside{position:static}
   .prod-grid{grid-template-columns:repeat(2,1fr)}
   .steps{grid-template-columns:1fr}
-  .section{padding:60px 0}
+  .band,main > section.section{padding:60px 0}
   .topbar-r{display:none}
 }
 @media (max-width:640px){
