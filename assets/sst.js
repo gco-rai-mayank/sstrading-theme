@@ -30,10 +30,10 @@
   /* ---- WhatsApp links: <a data-wa="Bearings"> opens a chat asking about that item.
           Every WhatsApp button gets the WhatsApp logo, including buttons pasted into Blogger pages. ---- */
   function waLinks(root) {
-    $$('[data-wa]', root).forEach(function (a) {
-      var item = a.getAttribute('data-wa');
-      var msg = item
-        ? 'Hello ' + NAME + ', I need a price / availability for: ' + item
+    $$('[data-wa], [data-wa-text]', root).forEach(function (a) {
+      var item = a.getAttribute('data-wa'), text = a.getAttribute('data-wa-text');
+      var msg = text ? (WA_TEXT[text] || text)
+        : item ? 'Hello ' + NAME + ', I need a price / availability for: ' + item
         : 'Hello ' + NAME + ', I have an enquiry.';
       a.href = waUrl(msg);
       a.target = '_blank';
@@ -60,7 +60,9 @@
         : '<input id="' + id + '" name="' + n + '" type="' + type + '" placeholder="' + esc(opt.ph || '') + '" value="' + esc(opt.val || '') + '"' + (opt.auto ? ' autocomplete="' + opt.auto + '"' : '') + '/>';
       return '<label class="field' + (opt.full ? ' full' : '') + '" for="' + id + '"><span>' + label + (opt.req ? '' : ' <small>optional</small>') + '</span>' + input + '</label>';
     };
+    var dealer = location.hash === '#dealer' || box.getAttribute('data-mode') === 'dealer';
     box.innerHTML =
+      '<div class="qmode" role="group" aria-label="Who is buying"><button type="button" data-mode="retail">Single parts</button><button type="button" data-mode="dealer">Dealer / bulk</button></div>' +
       '<form class="qform" novalidate>' +
       f('name', 'Your name', 'text', { req: 1, auto: 'name', ph: 'e.g. Rajesh Kumar' }) +
       f('phone', 'Mobile number', 'tel', { req: 1, auto: 'tel', ph: '10-digit mobile' }) +
@@ -68,6 +70,7 @@
       f('city', 'City', 'text', { auto: 'address-level2', ph: 'City' }) +
       f('part', 'Part / product needed', 'textarea', { req: 1, full: 1, val: given, ph: 'Part name + machine model, e.g. Gear cover, Shaktiman' }) +
       f('qty', 'Quantity', 'text', { full: 1, ph: 'e.g. 20 pcs' }) +
+      f('gstin', 'GSTIN', 'text', { full: 1, ph: 'For your GST invoice' }) +
       '<div class="qform-actions full">' +
       '<button class="btn btn-wa" type="submit" value="wa">' + ICON_WA + ' Send on WhatsApp</button>' +
       '<button class="btn btn-line" type="submit" value="mail">' + ICON_MAIL + ' Email</button>' +
@@ -80,37 +83,54 @@
     var field = function (k) { return form.querySelector('[name="' + k + '"]'); };
     var via = 'wa';
     $$('button[type=submit]', form).forEach(function (b) { b.addEventListener('click', function () { via = b.value; }); });
+    var label = function (k, text, req) { $('span', field(k).closest('.field')).innerHTML = text + (req ? '' : ' <small>optional</small>'); };
+    var setMode = function (d) {
+      dealer = d;
+      $$('.qmode button', box).forEach(function (b) { b.classList.toggle('is-on', (b.getAttribute('data-mode') === 'dealer') === d); });
+      label('firm', d ? 'Firm / shop name' : 'Company / firm', d);
+      label('city', 'City', d);
+      label('part', d ? 'Parts and quantities you need' : 'Part / product needed', true);
+      label('qty', d ? 'Monthly requirement' : 'Quantity', false);
+      field('qty').placeholder = d ? 'e.g. 50 gear covers a month' : 'e.g. 20 pcs';
+      field('gstin').closest('.field').hidden = !d;
+    };
+    $$('.qmode button', box).forEach(function (b) { b.addEventListener('click', function () { setMode(b.getAttribute('data-mode') === 'dealer'); }); });
+    setMode(dealer);
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var v = {};
-      ['name', 'phone', 'firm', 'city', 'part', 'qty'].forEach(function (k) { v[k] = (field(k).value || '').trim(); });
+      ['name', 'phone', 'firm', 'city', 'part', 'qty', 'gstin'].forEach(function (k) { v[k] = (field(k).value || '').trim(); });
       var bad = [];
       if (!v.name) bad.push('name');
       if (!/^[0-9+\-\s]{10,15}$/.test(v.phone)) bad.push('phone');
+      if (dealer && !v.firm) bad.push('firm');
+      if (dealer && !v.city) bad.push('city');
       if (!v.part) bad.push('part');
       $$('.field', form).forEach(function (l) { l.classList.remove('err'); });
       if (bad.length) {
         bad.forEach(function (k) { field(k).closest('.field').classList.add('err'); });
-        msg.textContent = 'Please fill in your name, a 10-digit mobile number and the part you need.';
+        msg.textContent = dealer ? 'Please fill in your name, mobile, firm, city and the parts you need.'
+          : 'Please fill in your name, a 10-digit mobile number and the part you need.';
         msg.hidden = false;
         field(bad[0]).focus();
         return;
       }
       msg.hidden = true;
       var lines = [
-        'Quote request — ' + NAME,
+        (dealer ? 'Dealer / bulk enquiry — ' : 'Quote request — ') + NAME,
         '',
         'Name: ' + v.name,
         'Mobile: ' + v.phone,
         v.firm ? 'Firm: ' + v.firm : '',
         v.city ? 'City: ' + v.city : '',
         'Requirement: ' + v.part,
-        v.qty ? 'Quantity: ' + v.qty : ''
+        v.qty ? (dealer ? 'Monthly requirement: ' : 'Quantity: ') + v.qty : '',
+        dealer && v.gstin ? 'GSTIN: ' + v.gstin : ''
       ].filter(function (x, i) { return x || i === 1; });
       var text = lines.join('\n');
       if (window.gtag) window.gtag('event', 'generate_lead', { method: via });
       if (via === 'mail') {
-        location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Quote request: ' + v.part.slice(0, 60)) + '&body=' + encodeURIComponent(text);
+        location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent((dealer ? 'Dealer enquiry: ' : 'Quote request: ') + v.part.slice(0, 60)) + '&body=' + encodeURIComponent(text);
       } else {
         openWa(waUrl(text));
       }
@@ -220,6 +240,8 @@
       });
     });
     q.addEventListener('input', apply);
+    var given = new URLSearchParams(location.search).get('q');
+    if (given) { q.value = given; apply(); }
     /* /p/products.html#rotavator opens with that machine selected */
     if (location.hash.length > 1) pick(location.hash.slice(1), true);
     window.addEventListener('hashchange', function () { pick(location.hash.slice(1) || 'all', true); });
@@ -266,6 +288,158 @@
     sync();
   }
 
+  /* ---- Ready-made WhatsApp messages: <a data-wa-text="photo|dealer"> ---- */
+  var WA_TEXT = {
+    photo: 'Hello ' + NAME + ', I am sending a photo of the part I need. Please tell me the price and availability.\nMachine (brand / model): ',
+    dealer: 'Hello ' + NAME + ', I am a dealer / bulk buyer. Please share your dealer rates.\nFirm: \nCity: '
+  };
+
+  /* ---- Part finder (home page): machine -> brand -> matching parts ---- */
+  var MAKES = ['Shaktiman', 'Sonalika', 'Fieldking', 'Mahindra', 'Garud', 'Dasmesh', 'John Deere', 'Escorts Kubota',
+    'Maschio Gaspardo', 'SBJ Nirmal', 'Jaswant', 'Bullz Power', 'Fieldstar', 'Landforce', 'Jagatjit', 'Annapurna', 'Virat'];
+  function renderFinder(box, data) {
+    var first = {};
+    data.parts.forEach(function (p) { p.machines.forEach(function (m) { if (!first[m]) first[m] = p.imgs[0]; }); });
+    box.innerHTML =
+      '<h2>Find your part</h2>' +
+      '<p class="tri"><span lang="hi">अपना पार्ट खोजें</span><span lang="pa">ਆਪਣਾ ਪਾਰਟ ਲੱਭੋ</span></p>' +
+      '<span class="finder-step">1. Your machine</span>' +
+      '<div class="finder-machines">' + data.machines.filter(function (m) { return m.id !== 'other'; }).map(function (m) {
+        return '<button class="fm" type="button" data-m="' + esc(m.id) + '"><img alt="" src="' + esc(BASE + 'products/' + first[m.id]) + '" loading="lazy">' + esc(m.name) + '</button>';
+      }).join('') + '</div>' +
+      '<label class="finder-step" for="fbrand">2. Brand of your machine</label>' +
+      '<select id="fbrand"><option value="">Any brand / not sure</option>' + MAKES.map(function (b) { return '<option>' + esc(b) + '</option>'; }).join('') + '</select>' +
+      '<div class="finder-result" aria-live="polite">Pick your machine to see the parts.</div>' +
+      '<div class="finder-actions"><a class="btn btn-amber" href="/p/products.html">See parts</a><a class="btn btn-wa" data-wa="" href="#">Ask on WhatsApp</a></div>';
+    var machine = '', sel = $('select', box), out = $('.finder-result', box), see = $('.btn-amber', box), ask = $('.btn-wa', box);
+    var names = {};
+    data.machines.forEach(function (m) { names[m.id] = m.name; });
+    var update = function () {
+      var brand = sel.value;
+      var inMachine = data.parts.filter(function (p) { return !machine || p.machines.indexOf(machine) >= 0; });
+      var forBrand = brand ? inMachine.filter(function (p) { return p.name.toLowerCase().indexOf(brand.split(' ')[0].toLowerCase()) >= 0; }) : [];
+      var what = machine ? names[machine] : 'all machines';
+      if (!machine) out.textContent = 'Pick your machine to see the parts.';
+      else if (brand && forBrand.length) out.textContent = inMachine.length + ' ' + what + ' parts, including ' + forBrand.length + ' made for ' + brand + '.';
+      else if (brand) out.textContent = inMachine.length + ' ' + what + ' parts. For ' + brand + ', send a photo and we’ll match the right one.';
+      else out.textContent = inMachine.length + ' ' + what + ' parts with photos.';
+      var q = brand && forBrand.length ? '?q=' + encodeURIComponent(brand.split(' ')[0]) : '';
+      see.href = '/p/products.html' + q + (machine ? '#' + machine : '');
+      see.textContent = machine ? 'See ' + (q ? forBrand.length : inMachine.length) + ' parts' : 'See parts';
+      ask.setAttribute('data-wa', (machine ? names[machine] + ' parts' : 'spare parts') + (brand ? ' for ' + brand : ''));
+      waLinks(box);
+    };
+    $$('.fm', box).forEach(function (b) {
+      b.addEventListener('click', function () {
+        machine = b.getAttribute('data-m');
+        $$('.fm', box).forEach(function (x) { x.classList.toggle('is-on', x === b); });
+        update();
+      });
+    });
+    sel.addEventListener('change', update);
+    update();
+  }
+
+  /* ---- Help button: quick links, and the guided tour ---- */
+  var TOURS = {
+    home: [
+      ['#finder', 'Pick your machine and brand here to see the matching parts.'],
+      ['.hero .btn-wa', 'Don’t know the part name? Send a photo of it on WhatsApp.'],
+      ['#dealers', 'Dealers and workshops: ask for special rates here.'],
+      ['.help-btn', 'Need help any time? Tap here.']
+    ],
+    products: [
+      ['.chips', 'Tap your machine to see only its parts.'],
+      ['.cat-search', 'Or search by name, e.g. “gear cover” or “U bolt”.'],
+      ['.part:not([hidden]) .part-add', 'Tap “+ List” on every part you need…'],
+      ['.part:not([hidden]) .btn-wa', '…or tap Enquire to ask about one part on WhatsApp.']
+    ],
+    quote: [
+      ['.qmode', 'Buying for a shop or workshop? Choose Dealer / bulk.'],
+      ['.qform-actions', 'Send your request on WhatsApp or by email. We reply the same working day.']
+    ]
+  };
+  function pageKind() {
+    if (document.body.classList.contains('is-home')) return 'home';
+    if ($('[data-sst-catalog] .part')) return 'products';
+    if ($('.quote-page .qform')) return 'quote';
+    return '';
+  }
+  function visible(el) { var r = el && el.getBoundingClientRect(); return r && r.width > 0 && r.height > 0; }
+  function tour(kind) {
+    var steps = (TOURS[kind] || []).filter(function (s) { return visible($(s[0])); });
+    if (!steps.length) return;
+    var dim = document.createElement('div'), spot = document.createElement('div'), tip = document.createElement('div');
+    dim.className = 'tour-dim'; spot.className = 'tour-spot'; tip.className = 'tour-tip';
+    tip.setAttribute('role', 'dialog');
+    dim.appendChild(spot); document.body.appendChild(dim); document.body.appendChild(tip);
+    var at = 0;
+    var end = function () {
+      dim.remove(); tip.remove();
+      window.removeEventListener('resize', place); window.removeEventListener('scroll', place);
+      try { localStorage.setItem('sst-tour-' + kind, '1'); } catch (e) {}
+    };
+    var place = function () {
+      var el = $(steps[at][0]); if (!el) return;
+      var r = el.getBoundingClientRect(), pad = 6;
+      spot.style.left = (r.left - pad) + 'px'; spot.style.top = (r.top - pad) + 'px';
+      spot.style.width = (r.width + 2 * pad) + 'px'; spot.style.height = (r.height + 2 * pad) + 'px';
+      var below = r.bottom + 14, tw = tip.offsetWidth, th = tip.offsetHeight;
+      var bar = $('.mbar'), barH = bar && visible(bar) ? bar.offsetHeight : 0;
+      var top = below + th < innerHeight - barH ? below
+        : r.top - th - 14 > 12 ? r.top - th - 14
+        : innerHeight - barH - th - 12;            // tall target (e.g. on phones): tip at the bottom of the screen
+      tip.style.top = top + 'px';
+      tip.style.left = Math.min(Math.max(16, r.left), innerWidth - tw - 16) + 'px';
+    };
+    var show = function () {
+      var el = $(steps[at][0]);
+      el.scrollIntoView({ block: 'center', behavior: 'instant' });   // jump, so the tip is placed at the final position
+      tip.innerHTML = '<span class="tour-n">' + (at + 1) + ' of ' + steps.length + '</span><p>' + esc(steps[at][1]) + '</p>' +
+        '<div class="tour-nav"><button class="tour-skip" type="button">Skip tour</button>' +
+        (at ? '<button class="btn btn-line" type="button" data-go="-1">Back</button>' : '') +
+        '<button class="btn btn-navy" type="button" data-go="1">' + (at === steps.length - 1 ? 'Done' : 'Next') + '</button></div>';
+      setTimeout(place, 60);
+    };
+    tip.addEventListener('click', function (e) {
+      if (e.target.closest('.tour-skip')) return end();
+      var go = e.target.closest('[data-go]');
+      if (!go) return;
+      at += +go.getAttribute('data-go');
+      if (at >= steps.length) return end();
+      show();
+    });
+    window.addEventListener('resize', place); window.addEventListener('scroll', place, { passive: true });
+    show();
+  }
+  function helpButton() {
+    var kind = pageKind();
+    var btn = document.createElement('button');
+    btn.className = 'help-btn'; btn.type = 'button'; btn.innerHTML = '<b>?</b> Help';
+    btn.setAttribute('aria-expanded', 'false');
+    var panel = document.createElement('div');
+    panel.className = 'help-panel'; panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-label', 'Help');
+    panel.innerHTML = '<button class="help-close" type="button" aria-label="Close">&#215;</button>' +
+      '<h3>How can we help?</h3><p class="tri"><span lang="hi">हम कैसे मदद करें?</span><span lang="pa">ਅਸੀਂ ਕਿਵੇਂ ਮਦਦ ਕਰੀਏ?</span></p>' +
+      (TOURS[kind] ? '<button class="hp" type="button" data-tour="1">&#9654; Show me how this page works</button>' : '') +
+      '<a class="hp-wa" data-wa-text="photo" href="#">' + ICON_WA + ' Send a part photo on WhatsApp</a>' +
+      '<a href="tel:+918528686005">&#9742; Call 85286 86005</a>' +
+      '<a href="/p/get-quote.html">&#9998; Get a quote</a>' +
+      '<a href="/p/get-quote.html#dealer">&#9733; Dealer / bulk enquiry</a>' +
+      '<a href="/#faq">? Questions buyers ask</a>';
+    document.body.appendChild(btn); document.body.appendChild(panel);
+    waLinks(panel);
+    var toggle = function (open) { panel.classList.toggle('open', open); btn.setAttribute('aria-expanded', open ? 'true' : 'false'); };
+    btn.addEventListener('click', function () { toggle(!panel.classList.contains('open')); });
+    $('.help-close', panel).addEventListener('click', function () { toggle(false); });
+    var t = $('[data-tour]', panel);
+    if (t) t.addEventListener('click', function () { toggle(false); tour(kind); });
+    /* first visit: show the tour once */
+    var seen = null;
+    try { seen = localStorage.getItem('sst-tour-' + kind); } catch (e) { seen = '1'; }
+    if (TOURS[kind] && !seen) setTimeout(function () { tour(kind); }, 1500);
+  }
+
   /* ---- Start everything once the page content is in place ---- */
   function boot() {
     waLinks();
@@ -302,6 +476,15 @@
       d.innerHTML = '';
     });
 
+    /* part finder */
+    var finder = $('[data-sst-finder]');
+    if (finder) {
+      fetch(BASE + 'catalog.json', { cache: 'no-cache' })
+        .then(function (r) { return r.json(); })
+        .then(function (data) { renderFinder(finder, data); })
+        .catch(function () {});
+    }
+
     /* products catalogue */
     var cat = $('[data-sst-catalog]');
     if (cat) {
@@ -310,12 +493,15 @@
       } else {
         fetch(BASE + 'catalog.json', { cache: 'no-cache' })
           .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-          .then(function (data) { renderCatalog(cat, data); initCatalog(cat); })
+          .then(function (data) { renderCatalog(cat, data); initCatalog(cat); helpButton(); })
           .catch(function () {
             cat.innerHTML = '<p class="empty-note">The parts list could not load. Please refresh the page, or <a data-wa="" href="#">ask us on WhatsApp</a>.</p>';
             waLinks(cat);
+            helpButton();
           });
       }
+    } else {
+      helpButton();
     }
   }
 
