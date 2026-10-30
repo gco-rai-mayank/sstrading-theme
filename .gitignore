@@ -1,0 +1,10 @@
+# Public repo = only the files the website loads (assets/) + README.
+# Everything else stays on this computer.
+/Products/
+/Logo/
+/blogger/
+/preview/
+/scripts/
+/SETUP-GUIDE.html
+__pycache__/
+*.pyc
