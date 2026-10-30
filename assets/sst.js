@@ -288,6 +288,26 @@
     sync();
   }
 
+  /* ---- Language lines: <p class="tri"> shows English, Hindi and Punjabi one after another ---- */
+  var triTimer = null;
+  function rotateLines() {
+    $$('.tri:not(.rot)').forEach(function (p) {
+      var kids = $$('span[lang]', p);
+      if (kids.length < 2) return;
+      p.classList.add('rot');
+      kids.forEach(function (k, i) { k.classList.toggle('is-on', i === 0); });
+    });
+    if (triTimer) return;
+    triTimer = setInterval(function () {
+      if (document.hidden) return;                 // pause while the tab isn't visible
+      $$('.tri.rot').forEach(function (p) {
+        var kids = $$('span[lang]', p), at = kids.indexOf($('.is-on', p));
+        kids[at].classList.remove('is-on');
+        kids[(at + 1) % kids.length].classList.add('is-on');
+      });
+    }, 2600);
+  }
+
   /* ---- Ready-made WhatsApp messages: <a data-wa-text="photo|dealer"> ---- */
   var WA_TEXT = {
     photo: 'Hello ' + NAME + ', I am sending a photo of the part I need. Please tell me the price and availability.\nMachine (brand / model): ',
@@ -301,8 +321,8 @@
     var first = {};
     data.parts.forEach(function (p) { p.machines.forEach(function (m) { if (!first[m]) first[m] = p.imgs[0]; }); });
     box.innerHTML =
-      '<h2>Find your part</h2>' +
-      '<p class="tri"><span lang="hi">अपना पार्ट खोजें</span><span lang="pa">ਆਪਣਾ ਪਾਰਟ ਲੱਭੋ</span></p>' +
+      '<h2>Part finder</h2>' +
+      '<p class="tri"><span lang="en">Find your part</span><span lang="hi">अपना पार्ट खोजें</span><span lang="pa">ਆਪਣਾ ਪਾਰਟ ਲੱਭੋ</span></p>' +
       '<span class="finder-step">1. Your machine</span>' +
       '<div class="finder-machines">' + data.machines.filter(function (m) { return m.id !== 'other'; }).map(function (m) {
         return '<button class="fm" type="button" data-m="' + esc(m.id) + '"><img alt="" src="' + esc(BASE + 'products/' + first[m.id]) + '" loading="lazy">' + esc(m.name) + '</button>';
@@ -420,7 +440,7 @@
     var panel = document.createElement('div');
     panel.className = 'help-panel'; panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-label', 'Help');
     panel.innerHTML = '<button class="help-close" type="button" aria-label="Close">&#215;</button>' +
-      '<h3>How can we help?</h3><p class="tri"><span lang="hi">हम कैसे मदद करें?</span><span lang="pa">ਅਸੀਂ ਕਿਵੇਂ ਮਦਦ ਕਰੀਏ?</span></p>' +
+      '<h3>Help</h3><p class="tri"><span lang="en">How can we help?</span><span lang="hi">हम कैसे मदद करें?</span><span lang="pa">ਅਸੀਂ ਕਿਵੇਂ ਮਦਦ ਕਰੀਏ?</span></p>' +
       (TOURS[kind] ? '<button class="hp" type="button" data-tour="1">&#9654; Show me how this page works</button>' : '') +
       '<a class="hp-wa" data-wa-text="photo" href="#">' + ICON_WA + ' Send a part photo on WhatsApp</a>' +
       '<a href="tel:+918528686005">&#9742; Call 85286 86005</a>' +
@@ -429,6 +449,7 @@
       '<a href="/#faq">? Questions buyers ask</a>';
     document.body.appendChild(btn); document.body.appendChild(panel);
     waLinks(panel);
+    rotateLines();
     var toggle = function (open) { panel.classList.toggle('open', open); btn.setAttribute('aria-expanded', open ? 'true' : 'false'); };
     btn.addEventListener('click', function () { toggle(!panel.classList.contains('open')); });
     $('.help-close', panel).addEventListener('click', function () { toggle(false); });
@@ -481,7 +502,7 @@
     if (finder) {
       fetch(BASE + 'catalog.json', { cache: 'no-cache' })
         .then(function (r) { return r.json(); })
-        .then(function (data) { renderFinder(finder, data); })
+        .then(function (data) { renderFinder(finder, data); rotateLines(); })
         .catch(function () {});
     }
 

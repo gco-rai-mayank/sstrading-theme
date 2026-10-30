@@ -344,6 +344,9 @@ p{margin:0 0 1em}
 
 /* ===================== Home: business-specific pieces ===================== */
 .tri{display:flex;flex-wrap:wrap;gap:4px 18px;margin:-4px 0 14px;font-weight:600;font-size:1.05rem;color:var(--amber-ink)}
+.tri.rot{display:grid;gap:0}
+.tri.rot > span{grid-area:1/1;opacity:0;transform:translateY(.45em);transition:opacity .5s ease,transform .5s ease;pointer-events:none}
+.tri.rot > span.is-on{opacity:1;transform:none;pointer-events:auto}
 .tri span[lang=hi]{font-family:'Noto Sans Devanagari',var(--body)}
 .tri span[lang=pa]{font-family:'Noto Sans Gurmukhi',var(--body)}
 .hero .tri,.dealer-band .tri{color:var(--amber-2)}
