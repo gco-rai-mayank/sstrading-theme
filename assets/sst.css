@@ -235,6 +235,38 @@ p{margin:0 0 1em}
 .post-body th{background:var(--bg-2);color:var(--navy)}
 .post-body a{text-decoration:underline;text-underline-offset:2px}
 .post-body .btn{text-decoration:none}
+.post-body table a{word-break:break-word}
+
+/* privacy policy page */
+.policy{max-width:880px;counter-reset:pol}
+.policy-meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.policy-meta span{font-size:.85rem;font-weight:600;color:var(--amber-ink);background:#fff6e0;border-radius:999px;padding:4px 12px}
+.policy-lead{font-size:1.12rem;color:var(--ink-2)}
+.policy-summary{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:24px 0}
+.policy-summary div{background:var(--bg-2);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:var(--radius-sm);padding:14px 16px}
+.policy-summary b{display:block;font:700 1.15rem/1.2 var(--head);color:var(--navy);margin-bottom:2px}
+.policy-summary span{font-size:.93rem;color:var(--ink-2)}
+.policy-toc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 22px;margin:0 0 12px}
+.policy-toc > b{font:700 1.1rem var(--head);color:var(--navy);text-transform:uppercase;letter-spacing:1px}
+.policy-toc ol{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(7,auto);grid-auto-flow:column;column-gap:40px;row-gap:6px;margin:12px 0 0;padding-left:1.4em;font-size:.95rem}
+.policy .policy-toc li{margin:0}
+.policy-toc a{text-decoration:none}
+.policy h2{counter-increment:pol;display:flex;align-items:baseline;gap:12px;font-size:1.65rem;margin-top:1.8em;padding-top:1.1em;border-top:1px solid var(--line);scroll-margin-top:96px}
+.policy h2::before{content:counter(pol,decimal-leading-zero);font-size:1rem;color:var(--amber-ink);background:#fff6e0;border-radius:8px;padding:3px 8px;flex:none}
+.policy table th{width:28%}
+.policy ul{padding-left:1.3em}
+.policy li{margin:6px 0}
+.policy-note{background:#fff6e0;border-radius:var(--radius-sm);padding:12px 16px;color:var(--amber-ink);font-size:.95rem}
+.policy-contact{display:grid;grid-template-columns:1fr 1fr;gap:16px;background:var(--navy);color:#dbe4f0;border-radius:var(--radius);padding:22px 24px}
+.policy-contact p{margin:0}
+.policy-contact b{color:#fff}
+.policy-contact a{color:var(--amber)}
+@media (max-width:640px){
+  .policy-summary,.policy-contact{grid-template-columns:1fr}
+  .policy-toc ol{grid-template-columns:1fr;grid-template-rows:none;grid-auto-flow:row}
+  .policy table{display:block;overflow-x:auto}
+  .policy h2{font-size:1.4rem}
+}
 .product-layout{display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:start}
 .product-aside{position:sticky;top:96px}
 .product-aside .quote-card{padding:22px}
