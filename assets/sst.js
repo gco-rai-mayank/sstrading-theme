@@ -245,6 +245,16 @@
     /* /p/products.html#rotavator opens with that machine selected */
     if (location.hash.length > 1) pick(location.hash.slice(1), true);
     window.addEventListener('hashchange', function () { pick(location.hash.slice(1) || 'all', true); });
+    /* /p/products.html?part=rotavator-rotor opens with that part in view (the home page photo strip links here) */
+    var want = new URLSearchParams(location.search).get('part');
+    var hit = want && parts.filter(function (p) { return (p.getAttribute('data-imgs') || '').indexOf('/products/' + want + '.') >= 0; })[0];
+    if (hit) {
+      if (hit.hidden) pick('all');
+      hit.classList.add('is-target');
+      var toPart = function () { hit.scrollIntoView({ block: 'center', behavior: 'instant' }); };
+      setTimeout(toPart, 80);
+      window.addEventListener('load', toPart);   // again once fonts and photos have settled the layout
+    }
 
     parts.forEach(function (p) {
       $('.part-img', p).addEventListener('click', function () {
@@ -395,7 +405,7 @@
     var panel = document.createElement('div');
     panel.className = 'help-panel'; panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-label', 'Help');
     panel.innerHTML = '<button class="help-close" type="button" aria-label="Close">&#215;</button>' +
-      '<h3>Help</h3><p class="tri"><span lang="en">How can we help?</span><span lang="hi">हम कैसे मदद करें?</span><span lang="pa">ਅਸੀਂ ਕਿਵੇਂ ਮਦਦ ਕਰੀਏ?</span></p>' +
+      '<h3>Help</h3><p class="tri notranslate"><span lang="en">How can we help?</span><span lang="hi">हम कैसे मदद करें?</span><span lang="pa">ਅਸੀਂ ਕਿਵੇਂ ਮਦਦ ਕਰੀਏ?</span></p>' +
       (TOURS[kind] ? '<button class="hp" type="button" data-tour="1">&#9654; Show me how this page works</button>' : '') +
       '<a class="hp-wa" data-wa-text="photo" href="#">' + ICON_WA + ' Send a part photo on WhatsApp</a>' +
       '<a href="tel:+918528686005">&#9742; Call 85286 86005</a>' +
@@ -416,8 +426,76 @@
     if (TOURS[kind] && !seen) setTimeout(function () { tour(kind); }, 1500);
   }
 
+  /* ---- Language: English, Hindi or Punjabi (Google's page translation; the choice is kept in a cookie) ---- */
+  var LANGS = [['en', 'English'], ['hi', 'हिंदी'], ['pa', 'ਪੰਜਾਬੀ']];
+  /* our own wording where machine translation gets trade terms wrong (e.g. "quote" as a saying) */
+  var OWN = {
+    'Get a Quote': ['कोटेशन लें', 'ਕੋਟੇਸ਼ਨ ਲਓ'],
+    'Get Quote': ['कोटेशन', 'ਕੋਟੇਸ਼ਨ'],
+    'Get a quote': ['कोटेशन लें', 'ਕੋਟੇਸ਼ਨ ਲਓ'],
+    'Request a quote': ['कोटेशन मांगें', 'ਕੋਟੇਸ਼ਨ ਮੰਗੋ'],
+    'Get a quote on WhatsApp': ['WhatsApp पर कोटेशन लें', 'WhatsApp ਤੇ ਕੋਟੇਸ਼ਨ ਲਓ'],
+    'Dealer enquiry': ['डीलर पूछताछ', 'ਡੀਲਰ ਪੁੱਛਗਿੱਛ'],
+    'Home': ['होम', 'ਹੋਮ'],
+    'Call': ['कॉल करें', 'ਕਾਲ ਕਰੋ']
+  };
+  function ownWords(code) {
+    var k = code === 'hi' ? 0 : 1;
+    $$('a, button, h1, h2, h3, summary').forEach(function (el) {
+      Array.prototype.slice.call(el.childNodes).forEach(function (n) {
+        if (n.nodeType !== 3) return;
+        var t = n.nodeValue.trim(), m = t.match(/^Call (\+?[\d ]+)$/);
+        if (OWN[t]) n.nodeValue = n.nodeValue.replace(t, OWN[t][k]);
+        else if (m) n.nodeValue = n.nodeValue.replace(t, OWN.Call[k] + ' ' + m[1]);
+        else return;
+        el.classList.add('notranslate');
+      });
+    });
+  }
+  function langNow() {
+    var m = document.cookie.match(/(?:^|;\s*)googtrans=\/en\/(\w+)/);
+    return m ? m[1] : 'en';
+  }
+  function setLang(code) {
+    var host = location.hostname.replace(/^www\./, '');
+    ['', ';domain=' + host, ';domain=.' + host].forEach(function (d) {
+      document.cookie = 'googtrans=;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT' + d;
+      if (code !== 'en') document.cookie = 'googtrans=/en/' + code + ';path=/' + d;
+    });
+    location.reload();
+  }
+  function langSwitch() {
+    var bar = $('.topbar .container');
+    if (!bar) return;
+    var now = langNow(), box = document.createElement('div');
+    box.className = 'lang-switch notranslate';
+    box.setAttribute('role', 'group'); box.setAttribute('aria-label', 'Language');
+    box.innerHTML = LANGS.map(function (l) {
+      return '<button type="button" lang="' + l[0] + '" data-lang="' + l[0] + '" aria-pressed="' + (l[0] === now) + '"' +
+        (l[0] === now ? ' class="is-on"' : '') + '>' + l[1] + '</button>';
+    }).join('');
+    bar.appendChild(box);
+    box.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-lang]');
+      if (b && b.getAttribute('data-lang') !== langNow()) setLang(b.getAttribute('data-lang'));
+    });
+    /* keep names, numbers and the already-trilingual lines as they are */
+    $$('.tri, .brand-name, .brand-tag, .brand-tile b, .brand-logo, a[href^="mailto:"]').forEach(function (el) { el.classList.add('notranslate'); });
+    if (now === 'en') return;
+    ownWords(now);
+    var holder = document.createElement('div');
+    holder.id = 'gt-el'; document.body.appendChild(holder);
+    window.sstTranslate = function () {
+      new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'en,hi,pa', autoDisplay: false }, 'gt-el');
+    };
+    var gs = document.createElement('script');
+    gs.src = 'https://translate.google.com/translate_a/element.js?cb=sstTranslate';
+    document.body.appendChild(gs);
+  }
+
   /* ---- Start everything once the page content is in place ---- */
   function boot() {
+    langSwitch();
     waLinks();
     $$('[data-sst-quote]').forEach(quoteForm);
 
@@ -450,6 +528,12 @@
     $$('.prod-img[data-img]').forEach(function (d) {
       d.style.backgroundImage = 'url("' + d.getAttribute('data-img') + '")';
       d.innerHTML = '';
+    });
+
+    /* home photo strip: each photo opens its own part (also covers a theme pasted before these links) */
+    $$('.rib').forEach(function (a) {
+      var m = ($('img', a) || {}).src && $('img', a).src.match(/\/products\/([^\/.]+)\.\w+$/);
+      if (m) a.href = '/p/products.html?part=' + m[1];
     });
 
     /* questions buyers ask: open the drawer when a link points to it */
