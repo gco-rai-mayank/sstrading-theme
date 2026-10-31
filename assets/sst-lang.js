@@ -359,6 +359,10 @@ window.SST_LANG = {
     'Proprietorship': ["प्रोपराइटरशिप", "ਪ੍ਰੋਪਰਾਈਟਰਸ਼ਿਪ"],
     'Let’s find the right part for your machine': ["आइए, आपकी मशीन का सही पार्ट ढूंढें", "ਆਓ, ਤੁਹਾਡੀ ਮਸ਼ੀਨ ਦਾ ਸਹੀ ਪਾਰਟ ਲੱਭੀਏ"],
     'Send the part name, machine model or a photo. We reply with price and availability.': ["पार्ट का नाम, मशीन का मॉडल या फोटो भेजें। हम रेट और स्टॉक बता देंगे।", "ਪਾਰਟ ਦਾ ਨਾਂ, ਮਸ਼ੀਨ ਦਾ ਮਾਡਲ ਜਾਂ ਫੋਟੋ ਭੇਜੋ। ਅਸੀਂ ਰੇਟ ਅਤੇ ਸਟਾਕ ਦੱਸ ਦਿਆਂਗੇ।"],
+    "Rotavators & implements": ["रोटावेटर और औज़ार", "ਰੋਟਾਵੇਟਰ ਅਤੇ ਸੰਦ"],
+    "Maschio Gaspardo series": ["Maschio Gaspardo की सीरीज़", "Maschio Gaspardo ਦੀ ਸੀਰੀਜ਼"],
+    "Shaktiman rotavator series": ["Shaktiman रोटावेटर सीरीज़", "Shaktiman ਰੋਟਾਵੇਟਰ ਸੀਰੀਜ਼"],
+    "Rotavator design type": ["रोटावेटर का डिज़ाइन", "ਰੋਟਾਵੇਟਰ ਦਾ ਡਿਜ਼ਾਈਨ"],
     /* help panel and tour */
     'Help': ['मदद', 'ਮਦਦ'],
     '▶ Show me how this page works': ['▶ यह पेज कैसे चलाएं, दिखाएं', '▶ ਇਹ ਪੇਜ ਕਿਵੇਂ ਵਰਤੀਏ, ਵਿਖਾਓ'],
