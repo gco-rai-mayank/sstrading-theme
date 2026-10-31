@@ -238,7 +238,7 @@ p{margin:0 0 1em}
 .post-body table a{word-break:break-word}
 
 /* blocks pasted into Blogger pages: no link underline, no extra heading gap */
-.post-body .mcard,.post-body .make-card,.post-body .brand-more{text-decoration:none}
+.post-body .mcard,.post-body .brand-more{text-decoration:none}
 .post-body .mcard h3{margin-top:0}
 
 /* brands page */
@@ -253,17 +253,10 @@ p{margin:0 0 1em}
 .brand-tile .brand-acts .btn{width:100%;white-space:normal;padding-left:.6em;padding-right:.6em}
 .brand-more{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:.88rem;font-weight:600;color:var(--navy-3)}
 .brand-more:hover{color:var(--amber-ink)}
-.make-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:14px}
-.make-card{display:flex;flex-direction:column;gap:2px;background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px 16px;color:var(--ink);transition:box-shadow .2s,transform .2s}
-.make-card:hover{box-shadow:var(--shadow);transform:translateY(-2px);color:var(--ink)}
-.make-logo{height:44px;display:flex;align-items:center;margin-bottom:8px}
-.make-logo img{max-height:40px;max-width:100%;width:auto;object-fit:contain}
-.make-text{align-self:flex-start;height:auto;padding:8px 12px;margin-bottom:10px;border-radius:8px;background:var(--bg-2);border:1px solid var(--line);font:700 1.05rem/1 var(--head);letter-spacing:1px;text-transform:uppercase;color:var(--navy)}
-.make-card b{font:700 1.1rem/1.2 var(--head);color:var(--navy)}
-.make-card span:not(.make-logo){font-size:.85rem;color:var(--ink-2)}
-.make-card em{font-style:normal;font-weight:600;font-size:.88rem;color:var(--navy-3);margin-top:8px;display:inline-flex;align-items:center;gap:6px}
-.make-card em .i{width:1em;height:1em}
-@media (max-width:900px){.make-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+.brand-tile .brand-models{display:inline-block;align-self:flex-start;margin-top:6px;font-size:.78rem;font-weight:600;color:var(--amber-ink);background:#fff6e0;border-radius:999px;padding:2px 9px}
+.model-line{margin-top:22px;color:var(--ink-2)}
+.model-line a{display:inline-flex;align-items:center;gap:4px;font-weight:600}
+.model-line .i{width:1em;height:1em}
 .bp-note{margin-top:28px;font-size:.88rem;color:var(--ink-3);border-top:1px solid var(--line);padding-top:16px}
 
 /* about page */
@@ -398,7 +391,7 @@ p{margin:0 0 1em}
 .makes span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:.35em 1em;font-weight:600;color:var(--navy);font-size:.95rem}
 .makes-note{text-align:center;font-size:.85rem;color:var(--ink-3);margin-top:14px}
 
-.brand-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.brand-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .brand-tile{background:#fff;border:1px solid var(--line);border-top:4px solid var(--amber);border-radius:var(--radius-sm);padding:16px;display:flex;flex-direction:column;gap:2px;min-height:150px;justify-content:flex-start}
 .brand-logo{height:64px;display:flex;align-items:center;margin-bottom:10px}
 .brand-logo img{max-height:64px;max-width:100%;width:auto;object-fit:contain}
@@ -583,7 +576,6 @@ p{margin:0 0 1em}
 /* ---------- Responsive ---------- */
 @media (max-width:1080px){
   .cat-grid,.mach-grid{grid-template-columns:repeat(2,1fr)}
-  .brand-grid{grid-template-columns:repeat(3,1fr)}
   .parts-grid{grid-template-columns:repeat(3,1fr)}
   .brand-strip{grid-template-columns:repeat(3,1fr)}
   .footer-grid{grid-template-columns:1fr 1fr}

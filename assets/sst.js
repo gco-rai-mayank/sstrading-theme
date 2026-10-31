@@ -209,11 +209,13 @@
     var parts = $$('.part', box), chips = $$('.chip', box), q = $('.cat-search input', box), none = $('.empty-note', box);
     var current = 'all';
     var apply = function () {
-      var words = (q.value || '').toLowerCase().split(/\s+/).filter(Boolean), shown = 0;
+      /* "gear cover, u bolt" shows either: commas separate alternatives, words within one must all match */
+      var alts = (q.value || '').toLowerCase().split(',').map(function (a) { return a.split(/\s+/).filter(Boolean); })
+        .filter(function (a) { return a.length; }), shown = 0;
       parts.forEach(function (p) {
         var hay = (p.getAttribute('data-name') + ' ' + $('.fits', p).textContent).toLowerCase();
         var ok = (current === 'all' || (' ' + p.getAttribute('data-cat') + ' ').indexOf(' ' + current + ' ') >= 0) &&
-          words.every(function (w) { return hay.indexOf(w) >= 0; });
+          (!alts.length || alts.some(function (ws) { return ws.every(function (w) { return hay.indexOf(w) >= 0; }); }));
         p.hidden = !ok;
         if (ok) shown++;
       });
@@ -569,8 +571,12 @@
         .then(function (r) { return r.json(); })
         .then(function (data) {
           brandTiles.forEach(function (t) {
-            var term = t.getAttribute('data-brand'), low = term.toLowerCase();
-            var n = data.parts.filter(function (p) { return p.name.toLowerCase().indexOf(low) >= 0; }).length;
+            var term = t.getAttribute('data-brand');   // e.g. "Shaktiman, SRT": parts named with either
+            var names = term.toLowerCase().split(/\s*,\s*/);
+            var n = data.parts.filter(function (p) {
+              var nm = p.name.toLowerCase();
+              return names.some(function (x) { return nm.indexOf(x) >= 0; });
+            }).length;
             if (!n) return;
             var a = document.createElement('a');
             a.className = 'brand-more';
