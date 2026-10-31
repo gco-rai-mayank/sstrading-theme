@@ -12,6 +12,7 @@
   var ME = document.currentScript || document.querySelector('script[src*="sst.js"]');
   var BASE = ME ? ME.src.replace(/sst\.js.*$/, '') : '';
 
+  var ICON_ARROW = '<svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   var ICON_WA = '<svg class="i i-wa" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>';
   var ICON_MAIL = '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>';
   var ICON_SEARCH = '<svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
@@ -560,6 +561,27 @@
       var m = ($('img', a) || {}).src && $('img', a).src.match(/\/products\/([^\/.]+)\.\w+$/);
       if (m) a.href = '/p/products.html?part=' + m[1];
     });
+
+    /* brands page: link each brand to the parts in the list made for it */
+    var brandTiles = $$('.brand-tile[data-brand]');
+    if (brandTiles.length) {
+      fetch(BASE + 'catalog.json', { cache: 'no-cache' })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          brandTiles.forEach(function (t) {
+            var term = t.getAttribute('data-brand'), low = term.toLowerCase();
+            var n = data.parts.filter(function (p) { return p.name.toLowerCase().indexOf(low) >= 0; }).length;
+            if (!n) return;
+            var a = document.createElement('a');
+            a.className = 'brand-more';
+            a.href = '/p/products.html?q=' + encodeURIComponent(term);
+            a.innerHTML = 'View ' + n + (n === 1 ? ' part' : ' parts') + ' ' + ICON_ARROW;
+            var acts = $('.brand-acts', t);
+            acts.insertBefore(a, acts.firstChild);   // above the button, so the buttons line up across a row
+          });
+        })
+        .catch(function () {});
+    }
 
     /* questions buyers ask: open the drawer when a link points to it */
     var faq = $('#faq .faq-drawer');
