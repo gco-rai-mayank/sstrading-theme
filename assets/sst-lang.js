@@ -20,7 +20,7 @@ window.SST_LANG = {
     'Mon – Sat · 9:30 AM – 7:30 PM': ['सोम – शनि · सुबह 9:30 – शाम 7:30', 'ਸੋਮ – ਸ਼ਨੀ · ਸਵੇਰੇ 9:30 – ਸ਼ਾਮ 7:30'],
 
     /* hero */
-    'Wholesale & retail · Ludhiana, Punjab': ['होलसेल और रिटेल · लुधियाना, पंजाब', 'ਹੋਲਸੇਲ ਅਤੇ ਰਿਟੇਲ · ਲੁਧਿਆਣਾ, ਪੰਜਾਬ'],
+    'S.S Trading Company · Ludhiana, Punjab': ['S.S Trading Company · लुधियाना, पंजाब', 'S.S Trading Company · ਲੁਧਿਆਣਾ, ਪੰਜਾਬ'],
     'Quality spare parts for rotavators, seeders and combines.': [
       '<em>रोटावेटर</em>, सीडर और कंबाइन के बढ़िया स्पेयर पार्ट्स',
       '<em>ਰੋਟਾਵੇਟਰ</em>, ਸੀਡਰ ਅਤੇ ਕੰਬਾਈਨ ਦੇ ਵਧੀਆ ਸਪੇਅਰ ਪਾਰਟਸ'],
