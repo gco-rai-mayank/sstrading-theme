@@ -405,7 +405,7 @@
     var panel = document.createElement('div');
     panel.className = 'help-panel'; panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-label', 'Help');
     panel.innerHTML = '<button class="help-close" type="button" aria-label="Close">&#215;</button>' +
-      '<h3>Help</h3><p class="tri notranslate"><span lang="en">How can we help?</span><span lang="hi">हम कैसे मदद करें?</span><span lang="pa">ਅਸੀਂ ਕਿਵੇਂ ਮਦਦ ਕਰੀਏ?</span></p>' +
+      '<h3>Help</h3><p class="tri"><span lang="en">How can we help?</span><span lang="hi">हम कैसे मदद करें?</span><span lang="pa">ਅਸੀਂ ਕਿਵੇਂ ਮਦਦ ਕਰੀਏ?</span></p>' +
       (TOURS[kind] ? '<button class="hp" type="button" data-tour="1">&#9654; Show me how this page works</button>' : '') +
       '<a class="hp-wa" data-wa-text="photo" href="#">' + ICON_WA + ' Send a part photo on WhatsApp</a>' +
       '<a href="tel:+918528686005">&#9742; Call 85286 86005</a>' +
@@ -426,71 +426,96 @@
     if (TOURS[kind] && !seen) setTimeout(function () { tour(kind); }, 1500);
   }
 
-  /* ---- Language: English, Hindi or Punjabi (Google's page translation; the choice is kept in a cookie) ---- */
+  /* ---- Language: English, Hindi or Punjabi. Our own everyday wording is in sst-lang.js,
+     loaded only when a visitor picks हिंदी or ਪੰਜਾਬੀ; the choice is remembered on this device. ---- */
   var LANGS = [['en', 'English'], ['hi', 'हिंदी'], ['pa', 'ਪੰਜਾਬੀ']];
-  /* our own wording where machine translation gets trade terms wrong (e.g. "quote" as a saying) */
-  var OWN = {
-    'Get a Quote': ['कोटेशन लें', 'ਕੋਟੇਸ਼ਨ ਲਓ'],
-    'Get Quote': ['कोटेशन', 'ਕੋਟੇਸ਼ਨ'],
-    'Get a quote': ['कोटेशन लें', 'ਕੋਟੇਸ਼ਨ ਲਓ'],
-    'Request a quote': ['कोटेशन मांगें', 'ਕੋਟੇਸ਼ਨ ਮੰਗੋ'],
-    'Get a quote on WhatsApp': ['WhatsApp पर कोटेशन लें', 'WhatsApp ਤੇ ਕੋਟੇਸ਼ਨ ਲਓ'],
-    'Dealer enquiry': ['डीलर पूछताछ', 'ਡੀਲਰ ਪੁੱਛਗਿੱਛ'],
-    'Home': ['होम', 'ਹੋਮ'],
-    'Call': ['कॉल करें', 'ਕਾਲ ਕਰੋ']
-  };
-  function ownWords(code) {
-    var k = code === 'hi' ? 0 : 1;
-    $$('a, button, h1, h2, h3, summary').forEach(function (el) {
-      Array.prototype.slice.call(el.childNodes).forEach(function (n) {
-        if (n.nodeType !== 3) return;
-        var t = n.nodeValue.trim(), m = t.match(/^Call (\+?[\d ]+)$/);
-        if (OWN[t]) n.nodeValue = n.nodeValue.replace(t, OWN[t][k]);
-        else if (m) n.nodeValue = n.nodeValue.replace(t, OWN.Call[k] + ' ' + m[1]);
-        else return;
-        el.classList.add('notranslate');
+  var LANG = 'en';
+  try { LANG = localStorage.getItem('sst-lang') || 'en'; } catch (e) {}
+  if (!/^(hi|pa)$/.test(LANG)) LANG = 'en';
+  /* names, part names, the trilingual lines and the chat picture stay as they are */
+  var KEEP = '.tri, .brand-name, .brand-tag, .brand-tile b, .brand-logo, .part h3, .phone, .lang-switch, script, style, textarea, [data-tr]';
+  var TR_TAGS = 'h1, h2, h3, h4, p, li, summary, dt, dd, a, button, span, b, small, label, option';
+  function norm(s) { return s.replace(/\s+/g, ' ').trim(); }
+  function tr(root, L) {
+    var k = LANG === 'hi' ? 0 : 1;
+    var swap = function (t) {
+      if (L.words[t]) return L.words[t][k];
+      for (var i = 0; i < L.patterns.length; i++) {
+        if (L.patterns[i][0].test(t)) return t.replace(L.patterns[i][0], L.patterns[i][1][k]);
+      }
+      return null;
+    };
+    /* whole elements first, so a sentence with bold words inside stays one sentence; icons keep their place */
+    var els = root.nodeType === 1 && root.matches(TR_TAGS) ? [root] : [];
+    els.concat($$(TR_TAGS, root)).forEach(function (el) {
+      if (el.closest(KEEP) || el.querySelector('input, textarea, select, button')) return;   // never wipe a form field
+      var w = L.words[norm(el.textContent)];
+      if (!w) return;
+      var before = '', after = '', seen = false;
+      Array.prototype.slice.call(el.childNodes).forEach(function (c) {
+        if (c.nodeType === 1 && /^(svg|img)$/i.test(c.tagName)) { if (seen) after += c.outerHTML; else before += c.outerHTML; }
+        else if (norm(c.textContent)) seen = true;
       });
+      el.innerHTML = before + (before ? ' ' : '') + w[k] + (after ? ' ' : '') + after;
+      el.setAttribute('data-tr', '');
+    });
+    /* then single pieces of text, e.g. a button label next to a count */
+    var walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT), n, todo = [];
+    while ((n = walk.nextNode())) todo.push(n);
+    todo.forEach(function (t) {
+      var v = norm(t.nodeValue), out;
+      if (!v || !t.parentNode || t.parentNode.closest(KEEP)) return;
+      if ((out = swap(v)) !== null) t.nodeValue = t.nodeValue.replace(t.nodeValue.trim(), out);
+    });
+    if (root.nodeType === 1) $$('[placeholder]', root).forEach(function (f) {
+      var out = swap(f.getAttribute('placeholder'));
+      if (out !== null) f.setAttribute('placeholder', out);
     });
   }
-  function langNow() {
-    var m = document.cookie.match(/(?:^|;\s*)googtrans=\/en\/(\w+)/);
-    return m ? m[1] : 'en';
-  }
-  function setLang(code) {
-    var host = location.hostname.replace(/^www\./, '');
-    ['', ';domain=' + host, ';domain=.' + host].forEach(function (d) {
-      document.cookie = 'googtrans=;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT' + d;
-      if (code !== 'en') document.cookie = 'googtrans=/en/' + code + ';path=/' + d;
-    });
-    location.reload();
+  function langLive(L) {
+    tr(document.body, L);
+    /* parts list, quote form, help panel and tour are built later: translate them as they appear */
+    new MutationObserver(function (list) {
+      list.forEach(function (m) {
+        var el = m.target.nodeType === 1 ? m.target : m.target.parentNode;
+        if (!el || !el.isConnected || el.closest('.lang-switch')) return;
+        el.removeAttribute('data-tr');
+        tr(el, L);
+      });
+    }).observe(document.body, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ['placeholder'] });
   }
   function langSwitch() {
+    /* a choice made with the earlier Google translation is cleared */
+    if (/googtrans=/.test(document.cookie)) {
+      var host = location.hostname.replace(/^www\./, '');
+      ['', ';domain=' + host, ';domain=.' + host].forEach(function (d) {
+        document.cookie = 'googtrans=;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT' + d;
+      });
+    }
     var bar = $('.topbar .container');
     if (!bar) return;
-    var now = langNow(), box = document.createElement('div');
-    box.className = 'lang-switch notranslate';
+    var box = document.createElement('div');
+    box.className = 'lang-switch';
     box.setAttribute('role', 'group'); box.setAttribute('aria-label', 'Language');
     box.innerHTML = LANGS.map(function (l) {
-      return '<button type="button" lang="' + l[0] + '" data-lang="' + l[0] + '" aria-pressed="' + (l[0] === now) + '"' +
-        (l[0] === now ? ' class="is-on"' : '') + '>' + l[1] + '</button>';
+      return '<button type="button" lang="' + l[0] + '" data-lang="' + l[0] + '" aria-pressed="' + (l[0] === LANG) + '"' +
+        (l[0] === LANG ? ' class="is-on"' : '') + '>' + l[1] + '</button>';
     }).join('');
     bar.appendChild(box);
     box.addEventListener('click', function (e) {
       var b = e.target.closest('[data-lang]');
-      if (b && b.getAttribute('data-lang') !== langNow()) setLang(b.getAttribute('data-lang'));
+      if (!b || b.getAttribute('data-lang') === LANG) return;
+      try { localStorage.setItem('sst-lang', b.getAttribute('data-lang')); } catch (e2) {}
+      location.reload();
     });
-    /* keep names, numbers and the already-trilingual lines as they are */
-    $$('.tri, .brand-name, .brand-tag, .brand-tile b, .brand-logo, a[href^="mailto:"]').forEach(function (el) { el.classList.add('notranslate'); });
-    if (now === 'en') return;
-    ownWords(now);
-    var holder = document.createElement('div');
-    holder.id = 'gt-el'; document.body.appendChild(holder);
-    window.sstTranslate = function () {
-      new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'en,hi,pa', autoDisplay: false }, 'gt-el');
-    };
-    var gs = document.createElement('script');
-    gs.src = 'https://translate.google.com/translate_a/element.js?cb=sstTranslate';
-    document.body.appendChild(gs);
+  }
+  function langStart() {
+    if (LANG === 'en') return;
+    document.documentElement.lang = LANG;
+    var s = document.createElement('script');
+    s.src = BASE + 'sst-lang.js';
+    s.onload = function () { if (window.SST_LANG) langLive(window.SST_LANG); };
+    document.head.appendChild(s);
   }
 
   /* ---- Start everything once the page content is in place ---- */
@@ -574,6 +599,7 @@
     } else {
       helpButton();
     }
+    langStart();
   }
 
   /* Safety net: if Blogger shows a page without its content (the posts gadget missing from the layout),

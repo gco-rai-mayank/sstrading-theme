@@ -1,0 +1,345 @@
+/* =========================================================
+   S.S Trading Company — Hindi and Punjabi wording
+   Everyday words buyers use (रेट, पार्ट्स, GST बिल), not textbook language.
+   Each entry: 'English text as shown on the page': ['हिंदी', 'ਪੰਜਾਬੀ'].
+   Loaded by sst.js only when a visitor picks हिंदी or ਪੰਜਾਬੀ.
+   ========================================================= */
+window.SST_LANG = {
+  words: {
+    /* header, menu, phone bar */
+    'Skip to content': ['सीधे जानकारी पर जाएं', 'ਸਿੱਧਾ ਜਾਣਕਾਰੀ ਤੇ ਜਾਓ'],
+    'Home': ['होम', 'ਹੋਮ'],
+    'Products': ['प्रोडक्ट्स', 'ਪ੍ਰੋਡਕਟਸ'],
+    'Brands': ['ब्रांड्स', 'ਬ੍ਰਾਂਡਸ'],
+    'About': ['हमारे बारे में', 'ਸਾਡੇ ਬਾਰੇ'],
+    'Contact': ['संपर्क', 'ਸੰਪਰਕ'],
+    'Get a Quote': ['रेट पूछें', 'ਰੇਟ ਪੁੱਛੋ'],
+    'Get Quote': ['रेट पूछें', 'ਰੇਟ ਪੁੱਛੋ'],
+    'Get a quote': ['रेट पूछें', 'ਰੇਟ ਪੁੱਛੋ'],
+    'Call': ['कॉल करें', 'ਕਾਲ ਕਰੋ'],
+    'Mon – Sat · 9:30 AM – 7:30 PM': ['सोम – शनि · सुबह 9:30 – शाम 7:30', 'ਸੋਮ – ਸ਼ਨੀ · ਸਵੇਰੇ 9:30 – ਸ਼ਾਮ 7:30'],
+
+    /* hero */
+    'Wholesale & retail · Ludhiana, Punjab': ['होलसेल और रिटेल · लुधियाना, पंजाब', 'ਹੋਲਸੇਲ ਅਤੇ ਰਿਟੇਲ · ਲੁਧਿਆਣਾ, ਪੰਜਾਬ'],
+    'Quality spare parts for rotavators, seeders and combines.': [
+      '<em>रोटावेटर</em>, सीडर और कंबाइन के बढ़िया स्पेयर पार्ट्स',
+      '<em>ਰੋਟਾਵੇਟਰ</em>, ਸੀਡਰ ਅਤੇ ਕੰਬਾਈਨ ਦੇ ਵਧੀਆ ਸਪੇਅਰ ਪਾਰਟਸ'],
+    'Gear covers, dust covers, gears, axles, PTO shafts, reel palla, tawa and more, supplied wholesale and retail with dispatch across India.': [
+      'गियर कवर, डस्ट कवर, गियर, एक्सल, PTO शाफ्ट, रील पल्ला, तवा और बहुत कुछ। होलसेल और रिटेल दोनों, पूरे भारत में भेजते हैं।',
+      'ਗੀਅਰ ਕਵਰ, ਡਸਟ ਕਵਰ, ਗੀਅਰ, ਐਕਸਲ, PTO ਸ਼ਾਫਟ, ਰੀਲ ਪੱਲਾ, ਤਵਾ ਅਤੇ ਹੋਰ ਬਹੁਤ ਕੁਝ। ਹੋਲਸੇਲ ਅਤੇ ਰਿਟੇਲ ਦੋਵੇਂ, ਪੂਰੇ ਭਾਰਤ ਵਿੱਚ ਭੇਜਦੇ ਹਾਂ।'],
+    'Get a quote on WhatsApp': ['WhatsApp पर रेट पूछें', 'WhatsApp ਤੇ ਰੇਟ ਪੁੱਛੋ'],
+    'View product range': ['सारे पार्ट्स देखें', 'ਸਾਰੇ ਪਾਰਟਸ ਵੇਖੋ'],
+    'Dispatch across India': ['पूरे भारत में डिलीवरी', 'ਪੂਰੇ ਭਾਰਤ ਵਿੱਚ ਡਿਲੀਵਰੀ'],
+    'GST invoice': ['GST बिल', 'GST ਬਿੱਲ'],
+    'UPI / bank transfer': ['UPI / बैंक ट्रांसफर', 'UPI / ਬੈਂਕ ਟ੍ਰਾਂਸਫਰ'],
+    'Dealer rates': ['डीलर रेट', 'ਡੀਲਰ ਰੇਟ'],
+    '20+ years of industry experience': ['20+ साल का तजुर्बा', '20+ ਸਾਲ ਦਾ ਤਜਰਬਾ'],
+    'Sales desk': ['सेल्स डेस्क', 'ਸੇਲਜ਼ ਡੈਸਕ'],
+    'Get a price today': ['आज ही रेट जानें', 'ਅੱਜ ਹੀ ਰੇਟ ਜਾਣੋ'],
+    'Share the part name, your machine model or a photo of the part. We reply with price and availability during working hours.': [
+      'पार्ट का नाम, मशीन का मॉडल या पार्ट की फोटो भेजें। काम के समय में हम रेट और स्टॉक बता देंगे।',
+      'ਪਾਰਟ ਦਾ ਨਾਂ, ਮਸ਼ੀਨ ਦਾ ਮਾਡਲ ਜਾਂ ਪਾਰਟ ਦੀ ਫੋਟੋ ਭੇਜੋ। ਕੰਮ ਦੇ ਸਮੇਂ ਵਿੱਚ ਅਸੀਂ ਰੇਟ ਅਤੇ ਸਟਾਕ ਦੱਸ ਦਿਆਂਗੇ।'],
+    'Request a quote': ['रेट पूछें', 'ਰੇਟ ਪੁੱਛੋ'],
+    'Monday – Saturday, 9:30 AM – 7:30 PM': ['सोमवार – शनिवार, सुबह 9:30 – शाम 7:30', 'ਸੋਮਵਾਰ – ਸ਼ਨੀਵਾਰ, ਸਵੇਰੇ 9:30 – ਸ਼ਾਮ 7:30'],
+
+    /* trust strip */
+    'Through trusted transporters': ['भरोसेमंद ट्रांसपोर्ट से', 'ਭਰੋਸੇਯੋਗ ਟਰਾਂਸਪੋਰਟ ਰਾਹੀਂ'],
+    'On every order': ['हर ऑर्डर पर', 'ਹਰ ਆਰਡਰ ਤੇ'],
+    'Secure payment options': ['सुरक्षित पेमेंट', 'ਸੁਰੱਖਿਅਤ ਪੇਮੈਂਟ'],
+    'Easy exchange': ['आसान बदली', 'ਆਸਾਨ ਬਦਲੀ'],
+    'For incorrect or non-fitting parts': ['गलत या फिट न होने वाला पार्ट बदल देते हैं', 'ਗਲਤ ਜਾਂ ਫਿੱਟ ਨਾ ਹੋਣ ਵਾਲਾ ਪਾਰਟ ਬਦਲ ਦਿੰਦੇ ਹਾਂ'],
+
+    /* team */
+    'Our leadership · Est. 14 November 2024': ['हमारी टीम · शुरुआत 14 नवंबर 2024', 'ਸਾਡੀ ਟੀਮ · ਸ਼ੁਰੂਆਤ 14 ਨਵੰਬਰ 2024'],
+    'Backed by over two decades of experience': ['20 साल से ज़्यादा का तजुर्बा', '20 ਸਾਲ ਤੋਂ ਵੱਧ ਦਾ ਤਜਰਬਾ'],
+    'S.S Trading Company was established in November 2024 by Mr. Sonu (Proprietor) and Mr. Suraj Kumar (Managing Director), who each bring more than 20 years of experience in agricultural machinery spare parts. Their long-standing relationships with manufacturers, dealers and workshops allow us to source the right part quickly and at a competitive price.': [
+      'S.S Trading Company नवंबर 2024 में श्री सोनू (प्रोपराइटर) और श्री सूरज कुमार (मैनेजिंग डायरेक्टर) ने शुरू की। दोनों को खेती की मशीनों के स्पेयर पार्ट्स में 20 साल से ज़्यादा का तजुर्बा है। कंपनियों, डीलरों और वर्कशॉप से पुराने रिश्तों की वजह से हम सही पार्ट जल्दी और सही रेट पर दिला पाते हैं।',
+      'S.S Trading Company ਨਵੰਬਰ 2024 ਵਿੱਚ ਸ੍ਰੀ ਸੋਨੂੰ (ਪ੍ਰੋਪਰਾਈਟਰ) ਅਤੇ ਸ੍ਰੀ ਸੂਰਜ ਕੁਮਾਰ (ਮੈਨੇਜਿੰਗ ਡਾਇਰੈਕਟਰ) ਨੇ ਸ਼ੁਰੂ ਕੀਤੀ। ਦੋਵਾਂ ਨੂੰ ਖੇਤੀ ਮਸ਼ੀਨਾਂ ਦੇ ਸਪੇਅਰ ਪਾਰਟਸ ਵਿੱਚ 20 ਸਾਲ ਤੋਂ ਵੱਧ ਦਾ ਤਜਰਬਾ ਹੈ। ਕੰਪਨੀਆਂ, ਡੀਲਰਾਂ ਅਤੇ ਵਰਕਸ਼ਾਪਾਂ ਨਾਲ ਪੁਰਾਣੇ ਸੰਬੰਧਾਂ ਕਰਕੇ ਅਸੀਂ ਸਹੀ ਪਾਰਟ ਛੇਤੀ ਅਤੇ ਸਹੀ ਰੇਟ ਤੇ ਦਿਵਾ ਸਕਦੇ ਹਾਂ।'],
+    'Mr. Sonu': ['श्री सोनू', 'ਸ੍ਰੀ ਸੋਨੂੰ'],
+    'Mr. Suraj Kumar': ['श्री सूरज कुमार', 'ਸ੍ਰੀ ਸੂਰਜ ਕੁਮਾਰ'],
+    'Proprietor': ['प्रोपराइटर', 'ਪ੍ਰੋਪਰਾਈਟਰ'],
+    'Managing Director': ['मैनेजिंग डायरेक्टर', 'ਮੈਨੇਜਿੰਗ ਡਾਇਰੈਕਟਰ'],
+
+    /* photo band */
+    'Part identification': ['पार्ट की पहचान', 'ਪਾਰਟ ਦੀ ਪਛਾਣ'],
+    'Not sure of the part name? Share a photo.': ['पार्ट का नाम नहीं पता? फोटो भेज दें।', 'ਪਾਰਟ ਦਾ ਨਾਂ ਨਹੀਂ ਪਤਾ? ਫੋਟੋ ਭੇਜ ਦਿਓ।'],
+    'Take a clear photo of the part, along with the machine’s name plate if possible.': [
+      '<b>पार्ट की साफ फोटो खींचें</b>, हो सके तो मशीन की नेमप्लेट की भी।',
+      '<b>ਪਾਰਟ ਦੀ ਸਾਫ਼ ਫੋਟੋ ਖਿੱਚੋ</b>, ਹੋ ਸਕੇ ਤਾਂ ਮਸ਼ੀਨ ਦੀ ਨੇਮਪਲੇਟ ਦੀ ਵੀ।'],
+    'Send it on WhatsApp to 85286 86005.': ['<b>WhatsApp पर भेजें</b> 85286 86005 पर।', '<b>WhatsApp ਤੇ ਭੇਜੋ</b> 85286 86005 ਤੇ।'],
+    'Receive the price, availability and dispatch details. Collect from our godown or have it sent by transport.': [
+      '<b>रेट, स्टॉक और डिलीवरी</b> की जानकारी पाएं। गोदाम से ले जाएं या ट्रांसपोर्ट से मंगवा लें।',
+      '<b>ਰੇਟ, ਸਟਾਕ ਅਤੇ ਡਿਲੀਵਰੀ</b> ਦੀ ਜਾਣਕਾਰੀ ਲਓ। ਗੋਦਾਮ ਤੋਂ ਲੈ ਜਾਓ ਜਾਂ ਟਰਾਂਸਪੋਰਟ ਰਾਹੀਂ ਮੰਗਵਾ ਲਓ।'],
+    'Share photo on WhatsApp': ['WhatsApp पर फोटो भेजें', 'WhatsApp ਤੇ ਫੋਟੋ ਭੇਜੋ'],
+
+    /* machines */
+    'Product range': ['हमारे पार्ट्स', 'ਸਾਡੇ ਪਾਰਟਸ'],
+    'Spare parts by machine': ['मशीन के हिसाब से पार्ट्स', 'ਮਸ਼ੀਨ ਮੁਤਾਬਕ ਪਾਰਟਸ'],
+    'Select a machine to view its parts. For anything not listed, send us the part name or a photo on WhatsApp and we will arrange it.': [
+      'अपनी मशीन चुनें और उसके पार्ट्स देखें। जो पार्ट लिस्ट में नहीं है, उसका नाम या फोटो WhatsApp पर भेजें, हम मंगवा देंगे।',
+      'ਆਪਣੀ ਮਸ਼ੀਨ ਚੁਣੋ ਅਤੇ ਉਸਦੇ ਪਾਰਟਸ ਵੇਖੋ। ਜਿਹੜਾ ਪਾਰਟ ਲਿਸਟ ਵਿੱਚ ਨਹੀਂ, ਉਸਦਾ ਨਾਂ ਜਾਂ ਫੋਟੋ WhatsApp ਤੇ ਭੇਜੋ, ਅਸੀਂ ਮੰਗਵਾ ਦਿਆਂਗੇ।'],
+    'Rotavator': ['रोटावेटर', 'ਰੋਟਾਵੇਟਰ'],
+    'Super Seeder': ['सुपर सीडर', 'ਸੁਪਰ ਸੀਡਰ'],
+    'Combine Harvester': ['कंबाइन', 'ਕੰਬਾਈਨ'],
+    'Straw Reaper': ['स्ट्रॉ रीपर', 'ਸਟ੍ਰਾ ਰੀਪਰ'],
+    'Seed Drill': ['सीड ड्रिल', 'ਸੀਡ ਡਰਿੱਲ'],
+    'Thresher': ['थ्रेशर', 'ਥਰੈਸ਼ਰ'],
+    'Potato Machine': ['आलू मशीन', 'ਆਲੂ ਮਸ਼ੀਨ'],
+    'Toka Machine': ['टोका मशीन', 'ਟੋਕਾ ਮਸ਼ੀਨ'],
+    'Other Parts': ['बाकी पार्ट्स', 'ਬਾਕੀ ਪਾਰਟਸ'],
+    'Gear covers, dust covers, depth skids, front clamps, rotors and side plates.': ['गियर कवर, डस्ट कवर, डेप्थ स्किड, फ्रंट क्लैंप, रोटर और साइड प्लेट।', 'ਗੀਅਰ ਕਵਰ, ਡਸਟ ਕਵਰ, ਡੈਪਥ ਸਕਿੱਡ, ਫਰੰਟ ਕਲੈਂਪ, ਰੋਟਰ ਅਤੇ ਸਾਈਡ ਪਲੇਟ।'],
+    'Disc assemblies, tines, side covers and side wheels.': ['डिस्क असेंबली, टाइन, साइड कवर और साइड व्हील।', 'ਡਿਸਕ ਅਸੈਂਬਲੀ, ਟਾਈਨ, ਸਾਈਡ ਕਵਰ ਅਤੇ ਸਾਈਡ ਵ੍ਹੀਲ।'],
+    'Reel pulleys, reel palla, thresher palla and feeder angles.': ['रील पुली, रील पल्ला, थ्रेशर पल्ला और फीडर एंगल।', 'ਰੀਲ ਪੁਲੀ, ਰੀਲ ਪੱਲਾ, ਥਰੈਸ਼ਰ ਪੱਲਾ ਅਤੇ ਫੀਡਰ ਐਂਗਲ।'],
+    'Reel palla, reaper rings, reaper bends and chuha.': ['रील पल्ला, रीपर रिंग, रीपर बेंड और चूहा।', 'ਰੀਲ ਪੱਲਾ, ਰੀਪਰ ਰਿੰਗ, ਰੀਪਰ ਬੈਂਡ ਅਤੇ ਚੂਹਾ।'],
+    'Boots, 13 and 14.5 inch wheels, latches and U bolts.': ['बूट, 13 और 14.5 इंच के पहिये, लैच और U बोल्ट।', 'ਬੂਟ, 13 ਅਤੇ 14.5 ਇੰਚ ਦੇ ਪਹੀਏ, ਲੈਚ ਅਤੇ U ਬੋਲਟ।'],
+    'Tawa from 9 to 25 inch, kabza, latches and U bolts.': ['9 से 25 इंच तक तवा, कब्ज़ा, लैच और U बोल्ट।', '9 ਤੋਂ 25 ਇੰਚ ਤੱਕ ਤਵਾ, ਕਬਜ਼ਾ, ਲੈਚ ਅਤੇ U ਬੋਲਟ।'],
+    'Aloo tawa, jhiri tawa, aloo taper and bolts.': ['आलू तवा, झिरी तवा, आलू टेपर और बोल्ट।', 'ਆਲੂ ਤਵਾ, ਝਿਰੀ ਤਵਾ, ਆਲੂ ਟੇਪਰ ਅਤੇ ਬੋਲਟ।'],
+    'Toka channels and gear plates for chaff cutters.': ['टोका मशीन के चैनल और गियर प्लेट।', 'ਟੋਕਾ ਮਸ਼ੀਨ ਦੇ ਚੈਨਲ ਅਤੇ ਗੀਅਰ ਪਲੇਟ।'],
+    'View parts': ['पार्ट्स देखें', 'ਪਾਰਟਸ ਵੇਖੋ'],
+    'See all products': ['सारे प्रोडक्ट्स देखें', 'ਸਾਰੇ ਪ੍ਰੋਡਕਟਸ ਵੇਖੋ'],
+
+    /* gearbox */
+    'Rotavator gearbox & transmission': ['रोटावेटर गियरबॉक्स और ट्रांसमिशन', 'ਰੋਟਾਵੇਟਰ ਗੀਅਰਬਾਕਸ ਅਤੇ ਟਰਾਂਸਮਿਸ਼ਨ'],
+    'Gears, axles, PTO shafts and more': ['गियर, एक्सल, PTO शाफ्ट और भी बहुत कुछ', 'ਗੀਅਰ, ਐਕਸਲ, PTO ਸ਼ਾਫਟ ਅਤੇ ਹੋਰ ਬਹੁਤ ਕੁਝ'],
+    'Along with body and sheet-metal parts, we supply gearbox and transmission components for all popular rotavator models.': [
+      'बॉडी और शीट के पार्ट्स के साथ हम सभी चलते रोटावेटर मॉडलों के गियरबॉक्स और ट्रांसमिशन पार्ट्स भी देते हैं।',
+      'ਬਾਡੀ ਅਤੇ ਸ਼ੀਟ ਦੇ ਪਾਰਟਸ ਦੇ ਨਾਲ ਅਸੀਂ ਸਾਰੇ ਚੱਲਦੇ ਰੋਟਾਵੇਟਰ ਮਾਡਲਾਂ ਦੇ ਗੀਅਰਬਾਕਸ ਅਤੇ ਟਰਾਂਸਮਿਸ਼ਨ ਪਾਰਟਸ ਵੀ ਦਿੰਦੇ ਹਾਂ।'],
+    'Enquire about gearbox parts': ['गियरबॉक्स पार्ट्स पूछें', 'ਗੀਅਰਬਾਕਸ ਪਾਰਟਸ ਪੁੱਛੋ'],
+    'View full list': ['पूरी लिस्ट देखें', 'ਪੂਰੀ ਲਿਸਟ ਵੇਖੋ'],
+    'Rotavator blades': ['रोटावेटर ब्लेड', 'ਰੋਟਾਵੇਟਰ ਬਲੇਡ'],
+
+    /* dealers */
+    'For dealers, workshops & bulk buyers': ['डीलर, वर्कशॉप और थोक खरीदारों के लिए', 'ਡੀਲਰਾਂ, ਵਰਕਸ਼ਾਪਾਂ ਅਤੇ ਥੋਕ ਖਰੀਦਦਾਰਾਂ ਲਈ'],
+    'Dealer and bulk supply': ['डीलर और थोक सप्लाई', 'ਡੀਲਰ ਅਤੇ ਥੋਕ ਸਪਲਾਈ'],
+    'We offer special pricing and credit terms to regular dealers, workshops and bulk buyers. Share your requirement to receive our dealer rates.': [
+      'रेगुलर डीलर, वर्कशॉप और थोक खरीदारों को खास रेट और उधार की सुविधा मिलती है। अपनी ज़रूरत बताएं, हम डीलर रेट भेज देंगे।',
+      'ਰੈਗੂਲਰ ਡੀਲਰਾਂ, ਵਰਕਸ਼ਾਪਾਂ ਅਤੇ ਥੋਕ ਖਰੀਦਦਾਰਾਂ ਨੂੰ ਖ਼ਾਸ ਰੇਟ ਅਤੇ ਉਧਾਰ ਦੀ ਸਹੂਲਤ ਮਿਲਦੀ ਹੈ। ਆਪਣੀ ਲੋੜ ਦੱਸੋ, ਅਸੀਂ ਡੀਲਰ ਰੇਟ ਭੇਜ ਦਿਆਂਗੇ।'],
+    'Dealer enquiry': ['डीलर पूछताछ', 'ਡੀਲਰ ਪੁੱਛਗਿੱਛ'],
+    'WhatsApp for dealer rates': ['डीलर रेट के लिए WhatsApp करें', 'ਡੀਲਰ ਰੇਟ ਲਈ WhatsApp ਕਰੋ'],
+    'Dealer rates & credit': ['डीलर रेट और उधार', 'ਡੀਲਰ ਰੇਟ ਅਤੇ ਉਧਾਰ'],
+    'For regular dealers and workshops': ['रेगुलर डीलर और वर्कशॉप के लिए', 'ਰੈਗੂਲਰ ਡੀਲਰਾਂ ਅਤੇ ਵਰਕਸ਼ਾਪਾਂ ਲਈ'],
+    'Securely packed, sent by transport': ['मज़बूत पैकिंग, ट्रांसपोर्ट से', 'ਮਜ਼ਬੂਤ ਪੈਕਿੰਗ, ਟਰਾਂਸਪੋਰਟ ਰਾਹੀਂ'],
+    'Claim your input tax credit': ['इनपुट टैक्स क्रेडिट ले सकते हैं', 'ਇਨਪੁਟ ਟੈਕਸ ਕ੍ਰੈਡਿਟ ਲੈ ਸਕਦੇ ਹੋ'],
+    'Convenient payment for every order': ['हर ऑर्डर पर आसान पेमेंट', 'ਹਰ ਆਰਡਰ ਤੇ ਆਸਾਨ ਪੇਮੈਂਟ'],
+
+    /* brands */
+    'Brands we deal in': ['हमारे ब्रांड्स', 'ਸਾਡੇ ਬ੍ਰਾਂਡਸ'],
+    'Brands we supply parts for': ['इन ब्रांड्स के पार्ट्स मिलते हैं', 'ਇਹਨਾਂ ਬ੍ਰਾਂਡਾਂ ਦੇ ਪਾਰਟਸ ਮਿਲਦੇ ਹਨ'],
+    'Spare parts for rotavators, super seeders, combines and reapers from these manufacturers. If your brand is not listed, please ask us.': [
+      'इन कंपनियों के रोटावेटर, सुपर सीडर, कंबाइन और रीपर के पार्ट्स। आपका ब्रांड यहां नहीं है तो पूछ लें।',
+      'ਇਹਨਾਂ ਕੰਪਨੀਆਂ ਦੇ ਰੋਟਾਵੇਟਰ, ਸੁਪਰ ਸੀਡਰ, ਕੰਬਾਈਨ ਅਤੇ ਰੀਪਰ ਦੇ ਪਾਰਟਸ। ਤੁਹਾਡਾ ਬ੍ਰਾਂਡ ਇੱਥੇ ਨਹੀਂ ਤਾਂ ਪੁੱਛ ਲਓ।'],
+    'All brand names and trademarks belong to their respective owners.': ['सभी ब्रांड नाम और ट्रेडमार्क उनकी अपनी कंपनियों के हैं।', 'ਸਾਰੇ ਬ੍ਰਾਂਡ ਨਾਂ ਅਤੇ ਟ੍ਰੇਡਮਾਰਕ ਉਹਨਾਂ ਦੀਆਂ ਆਪਣੀਆਂ ਕੰਪਨੀਆਂ ਦੇ ਹਨ।'],
+    'Rotavator spare parts': ['रोटावेटर स्पेयर पार्ट्स', 'ਰੋਟਾਵੇਟਰ ਸਪੇਅਰ ਪਾਰਟਸ'],
+    'Rotavators & farm machinery': ['रोटावेटर और खेती की मशीनें', 'ਰੋਟਾਵੇਟਰ ਅਤੇ ਖੇਤੀ ਮਸ਼ੀਨਾਂ'],
+    'Rotavators, seeders & combines': ['रोटावेटर, सीडर और कंबाइन', 'ਰੋਟਾਵੇਟਰ, ਸੀਡਰ ਅਤੇ ਕੰਬਾਈਨ'],
+    'Tractors & implements': ['ट्रैक्टर और औज़ार', 'ਟਰੈਕਟਰ ਅਤੇ ਸੰਦ'],
+    'Agricultural implements': ['खेती के औज़ार', 'ਖੇਤੀ ਦੇ ਸੰਦ'],
+    'Farm implements': ['खेती के औज़ार', 'ਖੇਤੀ ਦੇ ਸੰਦ'],
+    'Rotavators & puddlers': ['रोटावेटर और पडलर', 'ਰੋਟਾਵੇਟਰ ਅਤੇ ਪਡਲਰ'],
+    'Super seeders & reapers': ['सुपर सीडर और रीपर', 'ਸੁਪਰ ਸੀਡਰ ਅਤੇ ਰੀਪਰ'],
+    'Rotavators': ['रोटावेटर', 'ਰੋਟਾਵੇਟਰ'],
+    'Tractors & farm machinery': ['ट्रैक्टर और खेती की मशीनें', 'ਟਰੈਕਟਰ ਅਤੇ ਖੇਤੀ ਮਸ਼ੀਨਾਂ'],
+    'Rotavators & seed drills': ['रोटावेटर और सीड ड्रिल', 'ਰੋਟਾਵੇਟਰ ਅਤੇ ਸੀਡ ਡਰਿੱਲ'],
+
+    /* contact */
+    'Need a part urgently?': ['पार्ट जल्दी चाहिए?', 'ਪਾਰਟ ਛੇਤੀ ਚਾਹੀਦਾ ਹੈ?'],
+    'Call our sales team for immediate price and availability.': ['तुरंत रेट और स्टॉक के लिए हमें कॉल करें।', 'ਤੁਰੰਤ ਰੇਟ ਅਤੇ ਸਟਾਕ ਲਈ ਸਾਨੂੰ ਕਾਲ ਕਰੋ।'],
+    'Get in touch': ['हमसे बात करें', 'ਸਾਡੇ ਨਾਲ ਗੱਲ ਕਰੋ'],
+    'Contact us': ['संपर्क करें', 'ਸੰਪਰਕ ਕਰੋ'],
+    'Sales & enquiries': ['सेल्स और पूछताछ', 'ਸੇਲਜ਼ ਅਤੇ ਪੁੱਛਗਿੱਛ'],
+    'Mr. Suraj Kumar, Managing Director': ['श्री सूरज कुमार, मैनेजिंग डायरेक्टर', 'ਸ੍ਰੀ ਸੂਰਜ ਕੁਮਾਰ, ਮੈਨੇਜਿੰਗ ਡਾਇਰੈਕਟਰ'],
+    'Mr. Sonu, Proprietor': ['श्री सोनू, प्रोपराइटर', 'ਸ੍ਰੀ ਸੋਨੂੰ, ਪ੍ਰੋਪਰਾਈਟਰ'],
+    'Send part photos & lists': ['पार्ट की फोटो और लिस्ट भेजें', 'ਪਾਰਟ ਦੀਆਂ ਫੋਟੋਆਂ ਅਤੇ ਲਿਸਟ ਭੇਜੋ'],
+    'Email': ['ईमेल', 'ਈਮੇਲ'],
+    'For quotations & POs': ['कोटेशन और ऑर्डर के लिए', 'ਕੋਟੇਸ਼ਨ ਅਤੇ ਆਰਡਰ ਲਈ'],
+    'Visit our godown': ['हमारे गोदाम आएं', 'ਸਾਡੇ ਗੋਦਾਮ ਆਓ'],
+    'Address': ['पता', 'ਪਤਾ'],
+    'Working hours': ['काम का समय', 'ਕੰਮ ਦਾ ਸਮਾਂ'],
+    'Monday – Saturday9:30 AM – 7:30 PM': ['सोमवार – शनिवार<br>सुबह 9:30 – शाम 7:30', 'ਸੋਮਵਾਰ – ਸ਼ਨੀਵਾਰ<br>ਸਵੇਰੇ 9:30 – ਸ਼ਾਮ 7:30'],
+    'Get directions': ['रास्ता देखें', 'ਰਸਤਾ ਵੇਖੋ'],
+
+    /* questions buyers ask */
+    '? Questions buyers ask': ['<b>?</b> अक्सर पूछे जाने वाले सवाल', '<b>?</b> ਅਕਸਰ ਪੁੱਛੇ ਜਾਣ ਵਾਲੇ ਸਵਾਲ'],
+    'Questions buyers ask': ['अक्सर पूछे जाने वाले सवाल', 'ਅਕਸਰ ਪੁੱਛੇ ਜਾਣ ਵਾਲੇ ਸਵਾਲ'],
+    'How do I order a part?': ['पार्ट कैसे मंगवाएं?', 'ਪਾਰਟ ਕਿਵੇਂ ਮੰਗਵਾਈਏ?'],
+    'Send the part name, the machine brand and model, or just a photo of the old part on WhatsApp to 85286 86005. We confirm the price and stock, you pay by UPI or bank transfer, and you collect from our Ludhiana godown or we dispatch it by transport.': [
+      'पार्ट का नाम, मशीन का ब्रांड और मॉडल, या पुराने पार्ट की फोटो WhatsApp पर 85286 86005 पर भेजें। हम रेट और स्टॉक बताते हैं, आप UPI या बैंक ट्रांसफर से पेमेंट करें, फिर लुधियाना गोदाम से ले जाएं या हम ट्रांसपोर्ट से भेज देते हैं।',
+      'ਪਾਰਟ ਦਾ ਨਾਂ, ਮਸ਼ੀਨ ਦਾ ਬ੍ਰਾਂਡ ਅਤੇ ਮਾਡਲ, ਜਾਂ ਪੁਰਾਣੇ ਪਾਰਟ ਦੀ ਫੋਟੋ WhatsApp ਤੇ 85286 86005 ਤੇ ਭੇਜੋ। ਅਸੀਂ ਰੇਟ ਅਤੇ ਸਟਾਕ ਦੱਸਦੇ ਹਾਂ, ਤੁਸੀਂ UPI ਜਾਂ ਬੈਂਕ ਟ੍ਰਾਂਸਫਰ ਨਾਲ ਪੇਮੈਂਟ ਕਰੋ, ਫਿਰ ਲੁਧਿਆਣਾ ਗੋਦਾਮ ਤੋਂ ਲੈ ਜਾਓ ਜਾਂ ਅਸੀਂ ਟਰਾਂਸਪੋਰਟ ਰਾਹੀਂ ਭੇਜ ਦਿੰਦੇ ਹਾਂ।'],
+    'I don’t know the name of the part. What should I do?': ['मुझे पार्ट का नाम नहीं पता, क्या करूं?', 'ਮੈਨੂੰ ਪਾਰਟ ਦਾ ਨਾਂ ਨਹੀਂ ਪਤਾ, ਕੀ ਕਰਾਂ?'],
+    'Take a clear photo of the old or broken part and send it on WhatsApp, with the machine brand and model (a photo of the machine’s name plate helps). We will identify the right part for you.': [
+      'पुराने या टूटे पार्ट की साफ फोटो खींचकर WhatsApp पर भेजें, साथ में मशीन का ब्रांड और मॉडल लिखें (नेमप्लेट की फोटो हो तो और अच्छा)। सही पार्ट हम पहचान लेंगे।',
+      'ਪੁਰਾਣੇ ਜਾਂ ਟੁੱਟੇ ਪਾਰਟ ਦੀ ਸਾਫ਼ ਫੋਟੋ ਖਿੱਚ ਕੇ WhatsApp ਤੇ ਭੇਜੋ, ਨਾਲ ਮਸ਼ੀਨ ਦਾ ਬ੍ਰਾਂਡ ਅਤੇ ਮਾਡਲ ਲਿਖੋ (ਨੇਮਪਲੇਟ ਦੀ ਫੋਟੋ ਹੋਵੇ ਤਾਂ ਹੋਰ ਵਧੀਆ)। ਸਹੀ ਪਾਰਟ ਅਸੀਂ ਪਛਾਣ ਲਵਾਂਗੇ।'],
+    'Do you deliver outside Punjab?': ['क्या पंजाब से बाहर भी भेजते हैं?', 'ਕੀ ਪੰਜਾਬ ਤੋਂ ਬਾਹਰ ਵੀ ਭੇਜਦੇ ਹੋ?'],
+    'Yes. We dispatch parts across India by transport. The freight depends on the weight and destination, and we tell you before dispatch.': [
+      'हां, पूरे भारत में ट्रांसपोर्ट से भेजते हैं। भाड़ा वज़न और जगह के हिसाब से लगता है, जो भेजने से पहले बता देते हैं।',
+      'ਹਾਂ, ਪੂਰੇ ਭਾਰਤ ਵਿੱਚ ਟਰਾਂਸਪੋਰਟ ਰਾਹੀਂ ਭੇਜਦੇ ਹਾਂ। ਭਾੜਾ ਵਜ਼ਨ ਅਤੇ ਥਾਂ ਮੁਤਾਬਕ ਲੱਗਦਾ ਹੈ, ਜੋ ਭੇਜਣ ਤੋਂ ਪਹਿਲਾਂ ਦੱਸ ਦਿੰਦੇ ਹਾਂ।'],
+    'How can I pay?': ['पेमेंट कैसे करें?', 'ਪੇਮੈਂਟ ਕਿਵੇਂ ਕਰੀਏ?'],
+    'You can pay by UPI or bank transfer. A GST invoice is given with every order.': ['UPI या बैंक ट्रांसफर से पेमेंट करें। हर ऑर्डर के साथ GST बिल मिलता है।', 'UPI ਜਾਂ ਬੈਂਕ ਟ੍ਰਾਂਸਫਰ ਨਾਲ ਪੇਮੈਂਟ ਕਰੋ। ਹਰ ਆਰਡਰ ਨਾਲ GST ਬਿੱਲ ਮਿਲਦਾ ਹੈ।'],
+    'What if the part does not fit my machine?': ['पार्ट मशीन में फिट न हो तो?', 'ਪਾਰਟ ਮਸ਼ੀਨ ਵਿੱਚ ਫਿੱਟ ਨਾ ਹੋਵੇ ਤਾਂ?'],
+    'Contact us with your invoice and photos of the part. A wrong or non-fitting part can be exchanged for the right one.': [
+      'बिल और पार्ट की फोटो के साथ हमसे संपर्क करें। गलत या फिट न होने वाला पार्ट सही पार्ट से बदल दिया जाता है।',
+      'ਬਿੱਲ ਅਤੇ ਪਾਰਟ ਦੀਆਂ ਫੋਟੋਆਂ ਨਾਲ ਸਾਡੇ ਨਾਲ ਸੰਪਰਕ ਕਰੋ। ਗਲਤ ਜਾਂ ਫਿੱਟ ਨਾ ਹੋਣ ਵਾਲਾ ਪਾਰਟ ਸਹੀ ਪਾਰਟ ਨਾਲ ਬਦਲ ਦਿੱਤਾ ਜਾਂਦਾ ਹੈ।'],
+    'Do you give dealer rates or credit?': ['क्या डीलर रेट या उधार मिलता है?', 'ਕੀ ਡੀਲਰ ਰੇਟ ਜਾਂ ਉਧਾਰ ਮਿਲਦਾ ਹੈ?'],
+    'Yes. Regular dealers and workshops get special rates and credit terms. Send a dealer enquiry from the Get a Quote page or on WhatsApp.': [
+      'हां, रेगुलर डीलर और वर्कशॉप को खास रेट और उधार मिलता है। "रेट पूछें" पेज से या WhatsApp पर डीलर पूछताछ भेजें।',
+      'ਹਾਂ, ਰੈਗੂਲਰ ਡੀਲਰਾਂ ਅਤੇ ਵਰਕਸ਼ਾਪਾਂ ਨੂੰ ਖ਼ਾਸ ਰੇਟ ਅਤੇ ਉਧਾਰ ਮਿਲਦਾ ਹੈ। "ਰੇਟ ਪੁੱਛੋ" ਪੇਜ ਤੋਂ ਜਾਂ WhatsApp ਤੇ ਡੀਲਰ ਪੁੱਛਗਿੱਛ ਭੇਜੋ।'],
+    'Who runs S.S Trading Company?': ['S.S Trading Company कौन चलाता है?', 'S.S Trading Company ਕੌਣ ਚਲਾਉਂਦਾ ਹੈ?'],
+    'S.S Trading Company was established on 14 November 2024. It is led by Mr. Sonu (Proprietor, 98721 76007) and Mr. Suraj Kumar (Managing Director, 85286 86005), who each bring more than 20 years of experience in agricultural machinery spare parts.': [
+      'S.S Trading Company 14 नवंबर 2024 को शुरू हुई। इसे श्री सोनू (प्रोपराइटर, 98721 76007) और श्री सूरज कुमार (मैनेजिंग डायरेक्टर, 85286 86005) चलाते हैं, जिन्हें खेती की मशीनों के स्पेयर पार्ट्स में 20 साल से ज़्यादा का तजुर्बा है।',
+      'S.S Trading Company 14 ਨਵੰਬਰ 2024 ਨੂੰ ਸ਼ੁਰੂ ਹੋਈ। ਇਸਨੂੰ ਸ੍ਰੀ ਸੋਨੂੰ (ਪ੍ਰੋਪਰਾਈਟਰ, 98721 76007) ਅਤੇ ਸ੍ਰੀ ਸੂਰਜ ਕੁਮਾਰ (ਮੈਨੇਜਿੰਗ ਡਾਇਰੈਕਟਰ, 85286 86005) ਚਲਾਉਂਦੇ ਹਨ, ਜਿਨ੍ਹਾਂ ਨੂੰ ਖੇਤੀ ਮਸ਼ੀਨਾਂ ਦੇ ਸਪੇਅਰ ਪਾਰਟਸ ਵਿੱਚ 20 ਸਾਲ ਤੋਂ ਵੱਧ ਦਾ ਤਜਰਬਾ ਹੈ।'],
+    'Which machines and brands do you have parts for?': ['किन मशीनों और ब्रांड्स के पार्ट्स मिलते हैं?', 'ਕਿਹੜੀਆਂ ਮਸ਼ੀਨਾਂ ਅਤੇ ਬ੍ਰਾਂਡਾਂ ਦੇ ਪਾਰਟਸ ਮਿਲਦੇ ਹਨ?'],
+    'Rotavators, super seeders, combine harvesters, straw reapers, seed drills, threshers, potato machines and toka machines, for brands such as Shaktiman, Sonalika, Fieldking, Mahindra, Garud, Dasmesh, John Deere and Escorts Kubota.': [
+      'रोटावेटर, सुपर सीडर, कंबाइन, स्ट्रॉ रीपर, सीड ड्रिल, थ्रेशर, आलू मशीन और टोका मशीन के पार्ट्स; Shaktiman, Sonalika, Fieldking, Mahindra, Garud, Dasmesh, John Deere और Escorts Kubota जैसे ब्रांड्स के लिए।',
+      'ਰੋਟਾਵੇਟਰ, ਸੁਪਰ ਸੀਡਰ, ਕੰਬਾਈਨ, ਸਟ੍ਰਾ ਰੀਪਰ, ਸੀਡ ਡਰਿੱਲ, ਥਰੈਸ਼ਰ, ਆਲੂ ਮਸ਼ੀਨ ਅਤੇ ਟੋਕਾ ਮਸ਼ੀਨ ਦੇ ਪਾਰਟਸ; Shaktiman, Sonalika, Fieldking, Mahindra, Garud, Dasmesh, John Deere ਅਤੇ Escorts Kubota ਵਰਗੇ ਬ੍ਰਾਂਡਾਂ ਲਈ।'],
+    'Where are you and when are you open?': ['आप कहां हैं और कब खुले रहते हैं?', 'ਤੁਸੀਂ ਕਿੱਥੇ ਹੋ ਅਤੇ ਕਦੋਂ ਖੁੱਲ੍ਹੇ ਰਹਿੰਦੇ ਹੋ?'],
+    'Industrial Area-C, Sua Road, Dhandari Kalan, Ludhiana, Punjab 141016. Monday to Saturday, 9:30 AM to 7:30 PM.': [
+      'Industrial Area-C, Sua Road, Dhandari Kalan, Ludhiana, Punjab 141016. सोमवार से शनिवार, सुबह 9:30 से शाम 7:30 तक।',
+      'Industrial Area-C, Sua Road, Dhandari Kalan, Ludhiana, Punjab 141016. ਸੋਮਵਾਰ ਤੋਂ ਸ਼ਨੀਵਾਰ, ਸਵੇਰੇ 9:30 ਤੋਂ ਸ਼ਾਮ 7:30 ਤੱਕ।'],
+
+    /* footer */
+    'Wholesale and retail supplier of rotavator and agricultural machinery spare parts, Ludhiana. Established 2024, led by a team with over 20 years of industry experience.': [
+      'लुधियाना से रोटावेटर और खेती की मशीनों के स्पेयर पार्ट्स के होलसेल और रिटेल सप्लायर। 2024 में शुरू, 20 साल से ज़्यादा तजुर्बे वाली टीम।',
+      'ਲੁਧਿਆਣਾ ਤੋਂ ਰੋਟਾਵੇਟਰ ਅਤੇ ਖੇਤੀ ਮਸ਼ੀਨਾਂ ਦੇ ਸਪੇਅਰ ਪਾਰਟਸ ਦੇ ਹੋਲਸੇਲ ਅਤੇ ਰਿਟੇਲ ਸਪਲਾਇਰ। 2024 ਵਿੱਚ ਸ਼ੁਰੂ, 20 ਸਾਲ ਤੋਂ ਵੱਧ ਤਜਰਬੇ ਵਾਲੀ ਟੀਮ।'],
+    'Rotavator parts': ['रोटावेटर पार्ट्स', 'ਰੋਟਾਵੇਟਰ ਪਾਰਟਸ'],
+    'Super seeder parts': ['सुपर सीडर पार्ट्स', 'ਸੁਪਰ ਸੀਡਰ ਪਾਰਟਸ'],
+    'Combine parts': ['कंबाइन पार्ट्स', 'ਕੰਬਾਈਨ ਪਾਰਟਸ'],
+    'Straw reaper parts': ['स्ट्रॉ रीपर पार्ट्स', 'ਸਟ੍ਰਾ ਰੀਪਰ ਪਾਰਟਸ'],
+    'Gearbox parts': ['गियरबॉक्स पार्ट्स', 'ਗੀਅਰਬਾਕਸ ਪਾਰਟਸ'],
+    'All products': ['सारे प्रोडक्ट्स', 'ਸਾਰੇ ਪ੍ਰੋਡਕਟਸ'],
+    'Company': ['कंपनी', 'ਕੰਪਨੀ'],
+    'About us': ['हमारे बारे में', 'ਸਾਡੇ ਬਾਰੇ'],
+    'Privacy policy': ['प्राइवेसी पॉलिसी', 'ਪ੍ਰਾਈਵੇਸੀ ਪਾਲਿਸੀ'],
+    'S.S Trading Company. All rights reserved.': ['S.S Trading Company. सर्वाधिकार सुरक्षित।', 'S.S Trading Company. ਸਾਰੇ ਹੱਕ ਰਾਖਵੇਂ।'],
+
+    /* page titles and crumbs */
+    'About Us': ['हमारे बारे में', 'ਸਾਡੇ ਬਾਰੇ'],
+    'Contact Us': ['संपर्क करें', 'ਸੰਪਰਕ ਕਰੋ'],
+    'Privacy Policy': ['प्राइवेसी पॉलिसी', 'ਪ੍ਰਾਈਵੇਸੀ ਪਾਲਿਸੀ'],
+    '› Products': ['› प्रोडक्ट्स', '› ਪ੍ਰੋਡਕਟਸ'],
+    '› Brands': ['› ब्रांड्स', '› ਬ੍ਰਾਂਡਸ'],
+    '› About Us': ['› हमारे बारे में', '› ਸਾਡੇ ਬਾਰੇ'],
+    '› Contact Us': ['› संपर्क करें', '› ਸੰਪਰਕ ਕਰੋ'],
+    '› Get Quote': ['› रेट पूछें', '› ਰੇਟ ਪੁੱਛੋ'],
+    '› Privacy Policy': ['› प्राइवेसी पॉलिसी', '› ਪ੍ਰਾਈਵੇਸੀ ਪਾਲਿਸੀ'],
+
+    /* about page */
+    'Who we are': ['हम कौन हैं', 'ਅਸੀਂ ਕੌਣ ਹਾਂ'],
+    'S.S Trading Company is a wholesale and retail supplier of rotavator and agricultural machinery spare parts, at Industrial Area-C, Sua Road, Dhandari Kalan, Ludhiana. It was established on 14 November 2024. We serve farmers, mechanics, dealers and implement makers, and keep popular parts in stock so a machine doesn\'t sit idle in the middle of the season.': [
+      '<b>S.S Trading Company</b> रोटावेटर और खेती की मशीनों के स्पेयर पार्ट्स की होलसेल और रिटेल सप्लायर है, Industrial Area-C, Sua Road, Dhandari Kalan, Ludhiana में। इसकी शुरुआत <b>14 नवंबर 2024</b> को हुई। हम किसानों, मिस्त्रियों, डीलरों और मशीन बनाने वालों को पार्ट्स देते हैं, और चलते पार्ट्स स्टॉक में रखते हैं ताकि सीज़न के बीच मशीन खड़ी न रहे।',
+      '<b>S.S Trading Company</b> ਰੋਟਾਵੇਟਰ ਅਤੇ ਖੇਤੀ ਮਸ਼ੀਨਾਂ ਦੇ ਸਪੇਅਰ ਪਾਰਟਸ ਦੀ ਹੋਲਸੇਲ ਅਤੇ ਰਿਟੇਲ ਸਪਲਾਇਰ ਹੈ, Industrial Area-C, Sua Road, Dhandari Kalan, Ludhiana ਵਿੱਚ। ਇਸਦੀ ਸ਼ੁਰੂਆਤ <b>14 ਨਵੰਬਰ 2024</b> ਨੂੰ ਹੋਈ। ਅਸੀਂ ਕਿਸਾਨਾਂ, ਮਿਸਤਰੀਆਂ, ਡੀਲਰਾਂ ਅਤੇ ਮਸ਼ੀਨਾਂ ਬਣਾਉਣ ਵਾਲਿਆਂ ਨੂੰ ਪਾਰਟਸ ਦਿੰਦੇ ਹਾਂ, ਅਤੇ ਚੱਲਦੇ ਪਾਰਟਸ ਸਟਾਕ ਵਿੱਚ ਰੱਖਦੇ ਹਾਂ ਤਾਂ ਜੋ ਸੀਜ਼ਨ ਵਿੱਚ ਮਸ਼ੀਨ ਖੜ੍ਹੀ ਨਾ ਰਹੇ।'],
+    'Our leadership': ['हमारी टीम', 'ਸਾਡੀ ਟੀਮ'],
+    'Mr. Sonu (Proprietor) and Mr. Suraj Kumar (Managing Director) each bring more than 20 years of experience in agricultural machinery spare parts, along with long-standing relationships with manufacturers, dealers and workshops.': [
+      'श्री सोनू (प्रोपराइटर) और श्री सूरज कुमार (मैनेजिंग डायरेक्टर) दोनों को खेती की मशीनों के स्पेयर पार्ट्स में 20 साल से ज़्यादा का तजुर्बा है, और कंपनियों, डीलरों और वर्कशॉप से पुराने रिश्ते हैं।',
+      'ਸ੍ਰੀ ਸੋਨੂੰ (ਪ੍ਰੋਪਰਾਈਟਰ) ਅਤੇ ਸ੍ਰੀ ਸੂਰਜ ਕੁਮਾਰ (ਮੈਨੇਜਿੰਗ ਡਾਇਰੈਕਟਰ) ਦੋਵਾਂ ਨੂੰ ਖੇਤੀ ਮਸ਼ੀਨਾਂ ਦੇ ਸਪੇਅਰ ਪਾਰਟਸ ਵਿੱਚ 20 ਸਾਲ ਤੋਂ ਵੱਧ ਦਾ ਤਜਰਬਾ ਹੈ, ਅਤੇ ਕੰਪਨੀਆਂ, ਡੀਲਰਾਂ ਅਤੇ ਵਰਕਸ਼ਾਪਾਂ ਨਾਲ ਪੁਰਾਣੇ ਸੰਬੰਧ ਹਨ।'],
+    'What we supply': ['हम क्या देते हैं', 'ਅਸੀਂ ਕੀ ਦਿੰਦੇ ਹਾਂ'],
+    'See the full product list with photos': ['फोटो के साथ पूरी लिस्ट देखें', 'ਫੋਟੋਆਂ ਨਾਲ ਪੂਰੀ ਲਿਸਟ ਵੇਖੋ'],
+    'See all brands': ['सारे ब्रांड्स देखें', 'ਸਾਰੇ ਬ੍ਰਾਂਡਸ ਵੇਖੋ'],
+    'Why customers choose us': ['ग्राहक हमें क्यों चुनते हैं', 'ਗਾਹਕ ਸਾਨੂੰ ਕਿਉਂ ਚੁਣਦੇ ਹਨ'],
+    'Parts for all major rotavator models': ['सभी बड़े रोटावेटर मॉडलों के पार्ट्स', 'ਸਾਰੇ ਵੱਡੇ ਰੋਟਾਵੇਟਰ ਮਾਡਲਾਂ ਦੇ ਪਾਰਟਸ'],
+    'Wholesale rates for dealers and mechanics': ['डीलर और मिस्त्रियों के लिए होलसेल रेट', 'ਡੀਲਰਾਂ ਅਤੇ ਮਿਸਤਰੀਆਂ ਲਈ ਹੋਲਸੇਲ ਰੇਟ'],
+    'Part identification from a photo': ['फोटो से पार्ट की पहचान', 'ਫੋਟੋ ਤੋਂ ਪਾਰਟ ਦੀ ਪਛਾਣ'],
+    'Dispatch by transport anywhere in India': ['भारत में कहीं भी ट्रांसपोर्ट से डिलीवरी', 'ਭਾਰਤ ਵਿੱਚ ਕਿਤੇ ਵੀ ਟਰਾਂਸਪੋਰਟ ਰਾਹੀਂ ਡਿਲੀਵਰੀ'],
+    'GST invoice on every order (GSTIN 03BWWPS7025N1ZP)': ['हर ऑर्डर पर GST बिल (GSTIN 03BWWPS7025N1ZP)', 'ਹਰ ਆਰਡਰ ਤੇ GST ਬਿੱਲ (GSTIN 03BWWPS7025N1ZP)'],
+    'Send your requirement on WhatsApp': ['अपनी ज़रूरत WhatsApp पर भेजें', 'ਆਪਣੀ ਲੋੜ WhatsApp ਤੇ ਭੇਜੋ'],
+    'Contact details': ['संपर्क जानकारी', 'ਸੰਪਰਕ ਜਾਣਕਾਰੀ'],
+
+    /* contact page and get quote page */
+    'Need a price for a part?': ['किसी पार्ट का रेट चाहिए?', 'ਕਿਸੇ ਪਾਰਟ ਦਾ ਰੇਟ ਚਾਹੀਦਾ?'],
+    'Send the part name or a photo and we’ll reply with price and availability.': ['पार्ट का नाम या फोटो भेजें, हम रेट और स्टॉक बता देंगे।', 'ਪਾਰਟ ਦਾ ਨਾਂ ਜਾਂ ਫੋਟੋ ਭੇਜੋ, ਅਸੀਂ ਰੇਟ ਅਤੇ ਸਟਾਕ ਦੱਸ ਦਿਆਂਗੇ।'],
+    'WhatsApp us': ['WhatsApp करें', 'WhatsApp ਕਰੋ'],
+    'Tell us the part and your machine model, e.g. Gear cover, Shaktiman. Your details open in WhatsApp (or email) ready to send, and we reply with price and availability.': [
+      'पार्ट और मशीन का मॉडल बताएं, जैसे <i>Gear cover, Shaktiman</i>। आपकी जानकारी WhatsApp (या ईमेल) में तैयार खुल जाएगी, बस भेज दें। हम रेट और स्टॉक बता देंगे।',
+      'ਪਾਰਟ ਅਤੇ ਮਸ਼ੀਨ ਦਾ ਮਾਡਲ ਦੱਸੋ, ਜਿਵੇਂ <i>Gear cover, Shaktiman</i>। ਤੁਹਾਡੀ ਜਾਣਕਾਰੀ WhatsApp (ਜਾਂ ਈਮੇਲ) ਵਿੱਚ ਤਿਆਰ ਖੁੱਲ੍ਹ ਜਾਵੇਗੀ, ਬੱਸ ਭੇਜ ਦਿਓ। ਅਸੀਂ ਰੇਟ ਅਤੇ ਸਟਾਕ ਦੱਸ ਦਿਆਂਗੇ।'],
+    'Speak to our team': ['हमसे बात करें', 'ਸਾਡੇ ਨਾਲ ਗੱਲ ਕਰੋ'],
+    'Call or WhatsApp us during working hours.': ['काम के समय में कॉल या WhatsApp करें।', 'ਕੰਮ ਦੇ ਸਮੇਂ ਵਿੱਚ ਕਾਲ ਜਾਂ WhatsApp ਕਰੋ।'],
+    'How it works': ['कैसे होता है', 'ਕਿਵੇਂ ਹੁੰਦਾ ਹੈ'],
+    'Send the part name, machine model or a photo of the old part.': ['पार्ट का नाम, मशीन का मॉडल या पुराने पार्ट की फोटो भेजें।', 'ਪਾਰਟ ਦਾ ਨਾਂ, ਮਸ਼ੀਨ ਦਾ ਮਾਡਲ ਜਾਂ ਪੁਰਾਣੇ ਪਾਰਟ ਦੀ ਫੋਟੋ ਭੇਜੋ।'],
+    'We confirm availability, fitment and the best rate.': ['हम स्टॉक, फिटिंग और सही रेट पक्का करते हैं।', 'ਅਸੀਂ ਸਟਾਕ, ਫਿਟਿੰਗ ਅਤੇ ਸਹੀ ਰੇਟ ਪੱਕਾ ਕਰਦੇ ਹਾਂ।'],
+    'Collect from our Ludhiana godown, or we send it by transport.': ['लुधियाना गोदाम से ले जाएं, या हम ट्रांसपोर्ट से भेज देंगे।', 'ਲੁਧਿਆਣਾ ਗੋਦਾਮ ਤੋਂ ਲੈ ਜਾਓ, ਜਾਂ ਅਸੀਂ ਟਰਾਂਸਪੋਰਟ ਰਾਹੀਂ ਭੇਜ ਦਿਆਂਗੇ।'],
+
+    /* brands page */
+    'We deal in spare parts for these brands of rotavators, super seeders, combines, straw reapers and other farm machinery. Send us the brand and model of your machine and we’ll find the right part.': [
+      'हम इन ब्रांड्स के रोटावेटर, सुपर सीडर, कंबाइन, स्ट्रॉ रीपर और दूसरी खेती की मशीनों के पार्ट्स देते हैं। अपनी मशीन का ब्रांड और मॉडल भेजें, सही पार्ट हम ढूंढ देंगे।',
+      'ਅਸੀਂ ਇਹਨਾਂ ਬ੍ਰਾਂਡਾਂ ਦੇ ਰੋਟਾਵੇਟਰ, ਸੁਪਰ ਸੀਡਰ, ਕੰਬਾਈਨ, ਸਟ੍ਰਾ ਰੀਪਰ ਅਤੇ ਹੋਰ ਖੇਤੀ ਮਸ਼ੀਨਾਂ ਦੇ ਪਾਰਟਸ ਦਿੰਦੇ ਹਾਂ। ਆਪਣੀ ਮਸ਼ੀਨ ਦਾ ਬ੍ਰਾਂਡ ਅਤੇ ਮਾਡਲ ਭੇਜੋ, ਸਹੀ ਪਾਰਟ ਅਸੀਂ ਲੱਭ ਦਿਆਂਗੇ।'],
+    'Ask about your machine': ['अपनी मशीन के बारे में पूछें', 'ਆਪਣੀ ਮਸ਼ੀਨ ਬਾਰੇ ਪੁੱਛੋ'],
+
+    /* products page */
+    'Spare parts for rotavators, super seeders, combines, reapers, seed drills, threshers, potato and toka machines. Tap Enquire for one part, or + List on several parts and send them together on WhatsApp.': [
+      'रोटावेटर, सुपर सीडर, कंबाइन, रीपर, सीड ड्रिल, थ्रेशर, आलू और टोका मशीन के स्पेयर पार्ट्स। एक पार्ट के लिए <b>पूछें</b> दबाएं, या कई पार्ट्स पर <b>+ लिस्ट</b> दबाकर सब एक साथ WhatsApp पर भेजें।',
+      'ਰੋਟਾਵੇਟਰ, ਸੁਪਰ ਸੀਡਰ, ਕੰਬਾਈਨ, ਰੀਪਰ, ਸੀਡ ਡਰਿੱਲ, ਥਰੈਸ਼ਰ, ਆਲੂ ਅਤੇ ਟੋਕਾ ਮਸ਼ੀਨ ਦੇ ਸਪੇਅਰ ਪਾਰਟਸ। ਇੱਕ ਪਾਰਟ ਲਈ <b>ਪੁੱਛੋ</b> ਦਬਾਓ, ਜਾਂ ਕਈ ਪਾਰਟਸ ਤੇ <b>+ ਲਿਸਟ</b> ਦਬਾ ਕੇ ਸਾਰੇ ਇਕੱਠੇ WhatsApp ਤੇ ਭੇਜੋ।'],
+    'Loading parts…': ['पार्ट्स लोड हो रहे हैं…', 'ਪਾਰਟਸ ਲੋਡ ਹੋ ਰਹੇ ਹਨ…'],
+    'Rotavator gearbox & transmission parts': ['रोटावेटर गियरबॉक्स और ट्रांसमिशन पार्ट्स', 'ਰੋਟਾਵੇਟਰ ਗੀਅਰਬਾਕਸ ਅਤੇ ਟਰਾਂਸਮਿਸ਼ਨ ਪਾਰਟਸ'],
+    'Also available for Shaktiman, Sonalika, Fieldking, Maschio / Mahindra, Garud, Dasmesh, Escorts and other popular rotavator models:': [
+      'Shaktiman, Sonalika, Fieldking, Maschio / Mahindra, Garud, Dasmesh, Escorts और दूसरे चलते रोटावेटर मॉडलों के लिए भी मिलते हैं:',
+      'Shaktiman, Sonalika, Fieldking, Maschio / Mahindra, Garud, Dasmesh, Escorts ਅਤੇ ਹੋਰ ਚੱਲਦੇ ਰੋਟਾਵੇਟਰ ਮਾਡਲਾਂ ਲਈ ਵੀ ਮਿਲਦੇ ਹਨ:'],
+    'Ask for gearbox parts': ['गियरबॉक्स पार्ट्स पूछें', 'ਗੀਅਰਬਾਕਸ ਪਾਰਟਸ ਪੁੱਛੋ'],
+    'All parts': ['सारे पार्ट्स', 'ਸਾਰੇ ਪਾਰਟਸ'],
+    'Enquire': ['पूछें', 'ਪੁੱਛੋ'],
+    '+ List': ['+ लिस्ट', '+ ਲਿਸਟ'],
+    '✓ Added': ['✓ जोड़ा', '✓ ਜੋੜਿਆ'],
+    'Clear': ['हटाएं', 'ਹਟਾਓ'],
+    'Send list': ['लिस्ट भेजें', 'ਲਿਸਟ ਭੇਜੋ'],
+    'Search parts, e.g. gear cover, U bolt': ['पार्ट खोजें, जैसे gear cover, U bolt', 'ਪਾਰਟ ਲੱਭੋ, ਜਿਵੇਂ gear cover, U bolt'],
+    'No part matches. Send us the part name or a photo on WhatsApp and we\'ll find it.': [
+      'कोई पार्ट नहीं मिला। पार्ट का नाम या फोटो <a data-wa="" href="https://wa.me/918528686005">WhatsApp</a> पर भेजें, हम ढूंढ देंगे।',
+      'ਕੋਈ ਪਾਰਟ ਨਹੀਂ ਮਿਲਿਆ। ਪਾਰਟ ਦਾ ਨਾਂ ਜਾਂ ਫੋਟੋ <a data-wa="" href="https://wa.me/918528686005">WhatsApp</a> ਤੇ ਭੇਜੋ, ਅਸੀਂ ਲੱਭ ਦਿਆਂਗੇ।'],
+
+    /* quote form */
+    'Single parts': ['एक-दो पार्ट्स', 'ਇੱਕ-ਦੋ ਪਾਰਟਸ'],
+    'Dealer / bulk': ['डीलर / थोक', 'ਡੀਲਰ / ਥੋਕ'],
+    'Your name': ['आपका नाम', 'ਤੁਹਾਡਾ ਨਾਂ'],
+    'Mobile number': ['मोबाइल नंबर', 'ਮੋਬਾਈਲ ਨੰਬਰ'],
+    'Company / firm': ['कंपनी / फर्म', 'ਕੰਪਨੀ / ਫਰਮ'],
+    'Firm / shop name': ['फर्म / दुकान का नाम', 'ਫਰਮ / ਦੁਕਾਨ ਦਾ ਨਾਂ'],
+    'City': ['शहर', 'ਸ਼ਹਿਰ'],
+    'Part / product needed': ['कौन सा पार्ट चाहिए', 'ਕਿਹੜਾ ਪਾਰਟ ਚਾਹੀਦਾ'],
+    'Parts and quantities you need': ['कौन से पार्ट्स और कितने चाहिए', 'ਕਿਹੜੇ ਪਾਰਟਸ ਅਤੇ ਕਿੰਨੇ ਚਾਹੀਦੇ'],
+    'Quantity': ['कितने चाहिए', 'ਕਿੰਨੇ ਚਾਹੀਦੇ'],
+    'Monthly requirement': ['महीने की ज़रूरत', 'ਮਹੀਨੇ ਦੀ ਲੋੜ'],
+    'optional': ['ज़रूरी नहीं', 'ਜ਼ਰੂਰੀ ਨਹੀਂ'],
+    'Send on WhatsApp': ['WhatsApp पर भेजें', 'WhatsApp ਤੇ ਭੇਜੋ'],
+    'We usually reply within working hours on the same day.': ['काम के समय में उसी दिन जवाब देते हैं।', 'ਕੰਮ ਦੇ ਸਮੇਂ ਵਿੱਚ ਉਸੇ ਦਿਨ ਜਵਾਬ ਦਿੰਦੇ ਹਾਂ।'],
+    'Please fill in your name, a 10-digit mobile number and the part you need.': ['कृपया अपना नाम, 10 अंकों का मोबाइल नंबर और पार्ट का नाम भरें।', 'ਕਿਰਪਾ ਕਰਕੇ ਆਪਣਾ ਨਾਂ, 10 ਅੰਕਾਂ ਦਾ ਮੋਬਾਈਲ ਨੰਬਰ ਅਤੇ ਪਾਰਟ ਦਾ ਨਾਂ ਭਰੋ।'],
+    'Please fill in your name, mobile, firm, city and the parts you need.': ['कृपया नाम, मोबाइल, फर्म, शहर और पार्ट्स भरें।', 'ਕਿਰਪਾ ਕਰਕੇ ਨਾਂ, ਮੋਬਾਈਲ, ਫਰਮ, ਸ਼ਹਿਰ ਅਤੇ ਪਾਰਟਸ ਭਰੋ।'],
+    'e.g. Rajesh Kumar': ['जैसे Rajesh Kumar', 'ਜਿਵੇਂ Rajesh Kumar'],
+    '10-digit mobile': ['10 अंकों का मोबाइल', '10 ਅੰਕਾਂ ਦਾ ਮੋਬਾਈਲ'],
+    'Firm name': ['फर्म का नाम', 'ਫਰਮ ਦਾ ਨਾਂ'],
+    'Part name + machine model, e.g. Gear cover, Shaktiman': ['पार्ट का नाम + मशीन मॉडल, जैसे Gear cover, Shaktiman', 'ਪਾਰਟ ਦਾ ਨਾਂ + ਮਸ਼ੀਨ ਮਾਡਲ, ਜਿਵੇਂ Gear cover, Shaktiman'],
+    'e.g. 20 pcs': ['जैसे 20 पीस', 'ਜਿਵੇਂ 20 ਪੀਸ'],
+    'e.g. 50 gear covers a month': ['जैसे महीने के 50 गियर कवर', 'ਜਿਵੇਂ ਮਹੀਨੇ ਦੇ 50 ਗੀਅਰ ਕਵਰ'],
+    'For your GST invoice': ['GST बिल के लिए', 'GST ਬਿੱਲ ਲਈ'],
+    'Ask for price': ['रेट पूछें', 'ਰੇਟ ਪੁੱਛੋ'],
+    'Reply on WhatsApp, usually the same day.': ['जवाब WhatsApp पर, अक्सर उसी दिन।', 'ਜਵਾਬ WhatsApp ਤੇ, ਅਕਸਰ ਉਸੇ ਦਿਨ।'],
+
+    /* help panel and tour */
+    'Help': ['मदद', 'ਮਦਦ'],
+    '▶ Show me how this page works': ['▶ यह पेज कैसे चलाएं, दिखाएं', '▶ ਇਹ ਪੇਜ ਕਿਵੇਂ ਵਰਤੀਏ, ਵਿਖਾਓ'],
+    'Send a part photo on WhatsApp': ['WhatsApp पर पार्ट की फोटो भेजें', 'WhatsApp ਤੇ ਪਾਰਟ ਦੀ ਫੋਟੋ ਭੇਜੋ'],
+    '✎ Get a quote': ['✎ रेट पूछें', '✎ ਰੇਟ ਪੁੱਛੋ'],
+    '★ Dealer / bulk enquiry': ['★ डीलर / थोक पूछताछ', '★ ਡੀਲਰ / ਥੋਕ ਪੁੱਛਗਿੱਛ'],
+    'Skip tour': ['छोड़ें', 'ਛੱਡੋ'],
+    'Back': ['पीछे', 'ਪਿੱਛੇ'],
+    'Next': ['आगे', 'ਅੱਗੇ'],
+    'Done': ['हो गया', 'ਹੋ ਗਿਆ'],
+    'Request a quote, WhatsApp or call our sales desk from here.': ['यहां से रेट पूछें, WhatsApp या कॉल करें।', 'ਇੱਥੋਂ ਰੇਟ ਪੁੱਛੋ, WhatsApp ਜਾਂ ਕਾਲ ਕਰੋ।'],
+    'Not sure of the part name? Send a photo of it on WhatsApp.': ['पार्ट का नाम नहीं पता? उसकी फोटो WhatsApp पर भेजें।', 'ਪਾਰਟ ਦਾ ਨਾਂ ਨਹੀਂ ਪਤਾ? ਉਸਦੀ ਫੋਟੋ WhatsApp ਤੇ ਭੇਜੋ।'],
+    'Dealers and workshops can request special rates here.': ['डीलर और वर्कशॉप यहां खास रेट पूछ सकते हैं।', 'ਡੀਲਰ ਅਤੇ ਵਰਕਸ਼ਾਪਾਂ ਇੱਥੇ ਖ਼ਾਸ ਰੇਟ ਪੁੱਛ ਸਕਦੇ ਹਨ।'],
+    'Answers to common questions are here.': ['आम सवालों के जवाब यहां हैं।', 'ਆਮ ਸਵਾਲਾਂ ਦੇ ਜਵਾਬ ਇੱਥੇ ਹਨ।'],
+    'Need help any time? Tap here.': ['कभी भी मदद चाहिए? यहां दबाएं।', 'ਕਦੇ ਵੀ ਮਦਦ ਚਾਹੀਦੀ? ਇੱਥੇ ਦਬਾਓ।'],
+    'Tap your machine to see only its parts.': ['अपनी मशीन दबाएं, सिर्फ उसके पार्ट्स दिखेंगे।', 'ਆਪਣੀ ਮਸ਼ੀਨ ਦਬਾਓ, ਸਿਰਫ਼ ਉਸਦੇ ਪਾਰਟਸ ਦਿਖਣਗੇ।'],
+    'Or search by name, e.g. “gear cover” or “U bolt”.': ['या नाम से खोजें, जैसे “gear cover” या “U bolt”।', 'ਜਾਂ ਨਾਂ ਨਾਲ ਲੱਭੋ, ਜਿਵੇਂ “gear cover” ਜਾਂ “U bolt”।'],
+    'Tap “+ List” on every part you need…': ['जो पार्ट्स चाहिए, उन पर “+ लिस्ट” दबाएं…', 'ਜਿਹੜੇ ਪਾਰਟਸ ਚਾਹੀਦੇ, ਉਹਨਾਂ ਤੇ “+ ਲਿਸਟ” ਦਬਾਓ…'],
+    '…or tap Enquire to ask about one part on WhatsApp.': ['…या एक पार्ट के लिए “पूछें” दबाकर WhatsApp करें।', '…ਜਾਂ ਇੱਕ ਪਾਰਟ ਲਈ “ਪੁੱਛੋ” ਦਬਾ ਕੇ WhatsApp ਕਰੋ।'],
+    'Buying for a shop or workshop? Choose Dealer / bulk.': ['दुकान या वर्कशॉप के लिए ले रहे हैं? “डीलर / थोक” चुनें।', 'ਦੁਕਾਨ ਜਾਂ ਵਰਕਸ਼ਾਪ ਲਈ ਲੈ ਰਹੇ ਹੋ? “ਡੀਲਰ / ਥੋਕ” ਚੁਣੋ।'],
+    'Send your request on WhatsApp or by email. We reply the same working day.': ['अपनी पूछताछ WhatsApp या ईमेल से भेजें। उसी दिन जवाब देते हैं।', 'ਆਪਣੀ ਪੁੱਛਗਿੱਛ WhatsApp ਜਾਂ ਈਮੇਲ ਰਾਹੀਂ ਭੇਜੋ। ਉਸੇ ਦਿਨ ਜਵਾਬ ਦਿੰਦੇ ਹਾਂ।']
+  },
+  /* text with numbers in it */
+  patterns: [
+    [/^Call ([+\d ]+)$/, ['कॉल करें $1', 'ਕਾਲ ਕਰੋ $1']],
+    [/^☎ Call ([+\d ]+)$/, ['☎ कॉल करें $1', '☎ ਕਾਲ ਕਰੋ $1']],
+    [/^WhatsApp ([+\d ]+)$/, ['WhatsApp $1', 'WhatsApp $1']],
+    [/^(\d+) photos$/, ['$1 फोटो', '$1 ਫੋਟੋਆਂ']],
+    [/^(\d+) parts? in your list$/, ['लिस्ट में $1 पार्ट्स', 'ਲਿਸਟ ਵਿੱਚ $1 ਪਾਰਟਸ']],
+    [/^(\d+) of (\d+)$/, ['$1 / $2', '$1 / $2']]
+  ]
+};
