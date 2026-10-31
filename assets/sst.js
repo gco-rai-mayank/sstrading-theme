@@ -436,7 +436,7 @@
   try { LANG = localStorage.getItem('sst-lang') || 'en'; } catch (e) {}
   if (!/^(hi|pa)$/.test(LANG)) LANG = 'en';
   /* names, part names, the trilingual lines and the chat picture stay as they are */
-  var KEEP = '.tri, .brand-name, .brand-tag, .brand-tile b, .brand-logo, .part h3, .phone, .lang-switch, script, style, textarea, [data-tr]';
+  var KEEP = '.tri, .brand-name, .brand-tag, .brand-tile b, .bt, .brand-logo, .part h3, .phone, .lang-switch, script, style, textarea, [data-tr]';
   var TR_TAGS = 'h1, h2, h3, h4, p, li, summary, dt, dd, a, button, span, b, small, label, option';
   function norm(s) { return s.replace(/\s+/g, ' ').trim(); }
   function tr(root, L) {

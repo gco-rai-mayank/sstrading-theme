@@ -489,6 +489,14 @@ p{margin:0 0 1em}
 .rib{flex:none;width:120px;height:120px;background:#fff;border-radius:12px;padding:8px;display:block}
 .rib img{width:100%;height:100%;object-fit:contain}
 @keyframes ribbon{to{transform:translateX(-50%)}}
+/* home page: moving strip of brand logos */
+.brand-marquee{overflow:hidden;padding:8px 0 12px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.brand-track{display:flex;gap:16px;width:max-content;animation:ribbon 55s linear infinite}
+.brand-marquee:hover .brand-track{animation-play-state:paused}
+.bt{flex:none;width:190px;height:124px;background:#fff;border:1px solid var(--line);border-top:4px solid var(--amber);border-radius:var(--radius);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:14px;color:var(--navy);box-shadow:var(--shadow);transition:transform .2s}
+.bt:hover{transform:translateY(-3px);color:var(--navy)}
+.bt img{max-height:50px;max-width:150px;width:auto;object-fit:contain}
+.bt b{font:700 1rem/1 var(--head);letter-spacing:.3px}
 
 /* send-a-photo band with a WhatsApp chat drawing */
 .photo-steps{counter-reset:ps;list-style:none;padding:0;margin:18px 0 26px;display:grid;gap:12px}
@@ -637,6 +645,8 @@ p{margin:0 0 1em}
   .help-btn{left:12px;bottom:74px;padding:8px 12px 8px 8px;font-size:.88rem}
   .help-panel{left:12px;bottom:124px}
   .rib{width:96px;height:96px}
+  .bt{width:150px;height:106px;gap:8px}
+  .bt img{max-height:40px;max-width:118px}
   .btn-lg{width:100%}
   .to-top{bottom:80px;right:16px}
   .mbar{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(15,36,64,.08);padding-bottom:env(safe-area-inset-bottom)}
@@ -665,5 +675,5 @@ p{margin:0 0 1em}
 /* Hindi and Punjabi letters must not be spaced apart */
 html[lang=hi] :is(.eyebrow,.hc-tag,.site-footer h4,.chip,.btn),html[lang=pa] :is(.eyebrow,.hc-tag,.site-footer h4,.chip,.btn){letter-spacing:0}
 
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}.ribbon{overflow-x:auto}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}.ribbon,.brand-marquee{overflow-x:auto}}
 @media print{.topbar,.site-header,.fab-wa,.mbar,.to-top,.site-footer{display:none}}
