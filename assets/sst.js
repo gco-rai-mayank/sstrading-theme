@@ -314,58 +314,13 @@
     dealer: 'Hello ' + NAME + ', I am a dealer / bulk buyer. Please share your dealer rates.\nFirm: \nCity: '
   };
 
-  /* ---- Part finder (home page): machine -> brand -> matching parts ---- */
-  var MAKES = ['Shaktiman', 'Sonalika', 'Fieldking', 'Mahindra', 'Garud', 'Dasmesh', 'John Deere', 'Escorts Kubota',
-    'Maschio Gaspardo', 'SBJ Nirmal', 'Jaswant', 'Bullz Power', 'Fieldstar', 'Landforce', 'Jagatjit', 'Annapurna', 'Virat'];
-  function renderFinder(box, data) {
-    var first = {};
-    data.parts.forEach(function (p) { p.machines.forEach(function (m) { if (!first[m]) first[m] = p.imgs[0]; }); });
-    box.innerHTML =
-      '<h2>Part finder</h2>' +
-      '<p class="tri"><span lang="en">Find your part</span><span lang="hi">अपना पार्ट खोजें</span><span lang="pa">ਆਪਣਾ ਪਾਰਟ ਲੱਭੋ</span></p>' +
-      '<span class="finder-step">1. Your machine</span>' +
-      '<div class="finder-machines">' + data.machines.filter(function (m) { return m.id !== 'other'; }).map(function (m) {
-        return '<button class="fm" type="button" data-m="' + esc(m.id) + '"><img alt="" src="' + esc(BASE + 'products/' + first[m.id]) + '" loading="lazy">' + esc(m.name) + '</button>';
-      }).join('') + '</div>' +
-      '<label class="finder-step" for="fbrand">2. Brand of your machine</label>' +
-      '<select id="fbrand"><option value="">Any brand / not sure</option>' + MAKES.map(function (b) { return '<option>' + esc(b) + '</option>'; }).join('') + '</select>' +
-      '<div class="finder-result" aria-live="polite">Pick your machine to see the parts.</div>' +
-      '<div class="finder-actions"><a class="btn btn-amber" href="/p/products.html">See parts</a><a class="btn btn-wa" data-wa="" href="#">Ask on WhatsApp</a></div>';
-    var machine = '', sel = $('select', box), out = $('.finder-result', box), see = $('.btn-amber', box), ask = $('.btn-wa', box);
-    var names = {};
-    data.machines.forEach(function (m) { names[m.id] = m.name; });
-    var update = function () {
-      var brand = sel.value;
-      var inMachine = data.parts.filter(function (p) { return !machine || p.machines.indexOf(machine) >= 0; });
-      var forBrand = brand ? inMachine.filter(function (p) { return p.name.toLowerCase().indexOf(brand.split(' ')[0].toLowerCase()) >= 0; }) : [];
-      var what = machine ? names[machine] : 'all machines';
-      if (!machine) out.textContent = 'Pick your machine to see the parts.';
-      else if (brand && forBrand.length) out.textContent = inMachine.length + ' ' + what + ' parts, including ' + forBrand.length + ' made for ' + brand + '.';
-      else if (brand) out.textContent = inMachine.length + ' ' + what + ' parts. For ' + brand + ', send a photo and we’ll match the right one.';
-      else out.textContent = inMachine.length + ' ' + what + ' parts with photos.';
-      var q = brand && forBrand.length ? '?q=' + encodeURIComponent(brand.split(' ')[0]) : '';
-      see.href = '/p/products.html' + q + (machine ? '#' + machine : '');
-      see.textContent = machine ? 'See ' + (q ? forBrand.length : inMachine.length) + ' parts' : 'See parts';
-      ask.setAttribute('data-wa', (machine ? names[machine] + ' parts' : 'spare parts') + (brand ? ' for ' + brand : ''));
-      waLinks(box);
-    };
-    $$('.fm', box).forEach(function (b) {
-      b.addEventListener('click', function () {
-        machine = b.getAttribute('data-m');
-        $$('.fm', box).forEach(function (x) { x.classList.toggle('is-on', x === b); });
-        update();
-      });
-    });
-    sel.addEventListener('change', update);
-    update();
-  }
-
   /* ---- Help button: quick links, and the guided tour ---- */
   var TOURS = {
     home: [
-      ['#finder', 'Pick your machine and brand here to see the matching parts.'],
-      ['.hero .btn-wa', 'Don’t know the part name? Send a photo of it on WhatsApp.'],
-      ['#dealers', 'Dealers and workshops: ask for special rates here.'],
+      ['#quick', 'Request a quote, WhatsApp or call our sales desk from here.'],
+      ['.hero .btn-wa', 'Not sure of the part name? Send a photo of it on WhatsApp.'],
+      ['#dealers', 'Dealers and workshops can request special rates here.'],
+      ['.faq-toggle', 'Answers to common questions are here.'],
       ['.help-btn', 'Need help any time? Tap here.']
     ],
     products: [
@@ -497,14 +452,25 @@
       d.innerHTML = '';
     });
 
-    /* part finder */
-    var finder = $('[data-sst-finder]');
-    if (finder) {
-      fetch(BASE + 'catalog.json', { cache: 'no-cache' })
-        .then(function (r) { return r.json(); })
-        .then(function (data) { renderFinder(finder, data); rotateLines(); })
-        .catch(function () {});
+    /* questions buyers ask: open the drawer when a link points to it */
+    var faq = $('#faq .faq-drawer');
+    if (faq) {
+      var openFaq = function () {
+        if (location.hash !== '#faq') return;
+        faq.open = true;
+        faq.scrollIntoView({ block: 'start' });
+      };
+      openFaq();
+      window.addEventListener('hashchange', openFaq);
+      document.addEventListener('click', function (e) {   // the Help panel link, even when #faq is already in the address
+        var l = e.target.closest('a[href="/#faq"], a[href="#faq"]');
+        if (!l) return;
+        e.preventDefault();
+        if (location.hash !== '#faq') history.pushState(null, '', '#faq');
+        openFaq();
+      });
     }
+    rotateLines();
 
     /* products catalogue */
     var cat = $('[data-sst-catalog]');
