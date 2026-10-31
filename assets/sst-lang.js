@@ -363,6 +363,7 @@ window.SST_LANG = {
     "Maschio Gaspardo series": ["Maschio Gaspardo की सीरीज़", "Maschio Gaspardo ਦੀ ਸੀਰੀਜ਼"],
     "Shaktiman rotavator series": ["Shaktiman रोटावेटर सीरीज़", "Shaktiman ਰੋਟਾਵੇਟਰ ਸੀਰੀਜ਼"],
     "Rotavator design type": ["रोटावेटर का डिज़ाइन", "ਰੋਟਾਵੇਟਰ ਦਾ ਡਿਜ਼ਾਈਨ"],
+    "Sonalika rotavators": ["Sonalika रोटावेटर", "Sonalika ਰੋਟਾਵੇਟਰ"],
     /* help panel and tour */
     'Help': ['मदद', 'ਮਦਦ'],
     '▶ Show me how this page works': ['▶ यह पेज कैसे चलाएं, दिखाएं', '▶ ਇਹ ਪੇਜ ਕਿਵੇਂ ਵਰਤੀਏ, ਵਿਖਾਓ'],
