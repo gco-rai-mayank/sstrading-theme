@@ -685,9 +685,9 @@ html[lang=hi] :is(.eyebrow,.hc-tag,.site-footer h4,.chip,.btn),html[lang=pa] :is
 @media print{.topbar,.site-header,.fab-wa,.mbar,.to-top,.site-footer{display:none}}
 
 /* ---- Pages loaded from GitHub (data-sst-page): shimmer skeleton while loading, then sections fade up in turn ---- */
-[data-sst-page].is-loading{position:relative;min-height:320px;overflow:hidden}
-[data-sst-page].is-loading>*{opacity:0}
-[data-sst-page].is-loading::before{content:"";position:absolute;inset:0;
+[data-sst-page]:not(.is-loaded):not(.is-failed){animation:sstWait 8s step-end;position:relative;min-height:320px;overflow:hidden}
+[data-sst-page]:not(.is-loaded):not(.is-failed)>*{animation:sstGone 8s step-end}
+[data-sst-page]:not(.is-loaded):not(.is-failed)::before{content:"";position:absolute;inset:0;
   --sk:color-mix(in srgb,currentColor 9%,transparent);
   background:
     linear-gradient(var(--sk),var(--sk)) 0 0/58% 30px no-repeat,
@@ -698,11 +698,16 @@ html[lang=hi] :is(.eyebrow,.hc-tag,.site-footer h4,.chip,.btn),html[lang=pa] :is
     linear-gradient(var(--sk),var(--sk)) 0 176px/31% 120px no-repeat,
     linear-gradient(var(--sk),var(--sk)) 34.5% 176px/31% 120px no-repeat,
     linear-gradient(var(--sk),var(--sk)) 100% 176px/31% 120px no-repeat;
-  border-radius:12px}
-[data-sst-page].is-loading::after{content:"";position:absolute;inset:0;transform:translateX(-100%);
+  border-radius:12px;animation:sstDone 0s 8s forwards}
+[data-sst-page]:not(.is-loaded):not(.is-failed)::after{content:"";position:absolute;inset:0;transform:translateX(-100%);
   background:linear-gradient(90deg,transparent,color-mix(in srgb,#fff 55%,transparent),transparent);
-  animation:sstShimmer 1.15s ease-in-out infinite}
+  animation:sstShimmer 1.15s ease-in-out infinite,sstDone 0s 8s forwards}
 @keyframes sstShimmer{to{transform:translateX(100%)}}
+/* Loading state from the first paint, before the script runs: the Blogger fallback text is hidden for at most 8 s,
+   so it comes back by itself if the script never loads (and at once, with .is-failed, if the page file can't be fetched) */
+@keyframes sstWait{0%,100%{-webkit-text-fill-color:transparent}}
+@keyframes sstGone{0%,100%{opacity:0}}
+@keyframes sstDone{to{opacity:0;visibility:hidden}}
 [data-sst-page].is-loaded>*{animation:sstIn .55s cubic-bezier(.2,.7,.2,1) both}
 [data-sst-page].is-loaded>*:nth-child(2){animation-delay:.06s}
 [data-sst-page].is-loaded>*:nth-child(3){animation-delay:.12s}
@@ -711,7 +716,7 @@ html[lang=hi] :is(.eyebrow,.hc-tag,.site-footer h4,.chip,.btn),html[lang=pa] :is
 [data-sst-page].is-loaded>*:nth-child(n+6){animation-delay:.3s}
 @keyframes sstIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){
-  [data-sst-page].is-loading::after{animation:none;display:none}
+  [data-sst-page]:not(.is-loaded):not(.is-failed)::after{animation:none;display:none}
   [data-sst-page].is-loaded>*{animation:none}
 }
 

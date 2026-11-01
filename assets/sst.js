@@ -665,7 +665,7 @@
           });
           el.classList.add('is-loaded');   // sections fade in one after another
         })
-        .catch(function () {})   // keep the fallback text that is in the Blogger page
+        .catch(function () { el.classList.add('is-failed'); })   // keep the fallback text that is in the Blogger page
         .then(function () { el.classList.remove('is-loading'); if (--left === 0) done(); });
     });
   }
