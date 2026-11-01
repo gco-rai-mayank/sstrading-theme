@@ -411,7 +411,7 @@
       '<h3>Help</h3><p class="tri"><span lang="en">How can we help?</span><span lang="hi">हम कैसे मदद करें?</span><span lang="pa">ਅਸੀਂ ਕਿਵੇਂ ਮਦਦ ਕਰੀਏ?</span></p>' +
       (TOURS[kind] ? '<button class="hp" type="button" data-tour="1">&#9654; Show me how this page works</button>' : '') +
       '<a class="hp-wa" data-wa-text="photo" href="#">' + ICON_WA + ' Send a part photo on WhatsApp</a>' +
-      '<a href="tel:+918528686005">&#9742; Call 85286 86005</a>' +
+      (WA ? fillTokens('<a href="{{tel}}">&#9742; Call {{show}}</a>') : '') +
       '<a href="/p/get-quote.html">&#9998; Get a quote</a>' +
       '<a href="/p/get-quote.html#dealer">&#9733; Dealer / bulk enquiry</a>' +
       '<a href="/#faq">? Questions buyers ask</a>';
