@@ -630,12 +630,52 @@
     langStart();
   }
 
+  /* ---- Pages from GitHub: a Blogger page holds only <div data-sst-page="about-us">short fallback</div>,
+          and the real content comes from pages/about-us.html next to this script. Edit that file and push:
+          the live page changes, nothing to paste in Blogger.
+          Phone numbers and email stay in the theme (window.SST), so the public repo has none. In page files use
+          {{base}} = this folder, {{email}}, and for a number: {{tel}} {{wa}} {{show}} (main WhatsApp) or
+          {{tel:key}} {{wa:key}} {{show:key}} for window.SST.phones[key]. ---- */
+  function fillTokens(html) {
+    return html.replace(/\{\{(\w+)(?::(\w+))?\}\}/g, function (m, kind, who) {
+      if (kind === 'base') return BASE;
+      if (kind === 'email') return EMAIL;
+      var num = who ? (C.phones || {})[who] : WA;
+      if (!num) return kind === 'show' ? '' : '/p/contact-us.html';
+      if (kind === 'tel') return 'tel:+' + num;
+      if (kind === 'wa') return 'https://wa.me/' + num;
+      if (kind === 'show') return num.replace(/^91(?=\d{10}$)/, '').replace(/^(\d{5})(\d{5})$/, '$1 $2');
+      return m;
+    });
+  }
+  function loadPages(done) {
+    var slots = $$('[data-sst-page]'), left = slots.length;
+    if (!left) return done();
+    slots.forEach(function (el) {
+      el.classList.add('is-loading');   // shimmer placeholder (sst.css) until the content arrives
+      fetch(BASE + 'pages/' + el.getAttribute('data-sst-page') + '.html', { cache: 'no-cache' })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function (html) {
+          el.innerHTML = fillTokens(html);
+          $$('script', el).forEach(function (old) {   // scripts added with innerHTML don't run: recreate them
+            var s = document.createElement('script');
+            Array.prototype.forEach.call(old.attributes, function (a) { s.setAttribute(a.name, a.value); });
+            s.text = old.text;
+            old.parentNode.replaceChild(s, old);
+          });
+          el.classList.add('is-loaded');   // sections fade in one after another
+        })
+        .catch(function () {})   // keep the fallback text that is in the Blogger page
+        .then(function () { el.classList.remove('is-loading'); if (--left === 0) done(); });
+    });
+  }
+
   /* Safety net: if Blogger shows a page without its content (the posts gadget missing from the layout),
      load that page's content from Blogger's own page feed, then start as normal. */
   function start() {
     var area = $('.blog-area');
     var emptyPage = document.body.classList.contains('is-page') && area && !$('.post-body', area);
-    if (!emptyPage) return boot();
+    if (!emptyPage) return loadPages(boot);
     fetch('/feeds/pages/default?alt=json&max-results=100')
       .then(function (r) { return r.json(); })
       .then(function (d) {
@@ -646,7 +686,7 @@
         if (entry) area.innerHTML = '<article class="post-body entry-content">' + entry.content.$t + '</article>';
       })
       .catch(function () {})
-      .then(boot);
+      .then(function () { loadPages(boot); });
   }
   start();
 })();
