@@ -443,9 +443,17 @@
     document.title = 'Page Not Found | ' + NAME;
     var box = document.createElement('div');
     box.className = 'not-found';
-    box.innerHTML = '<p>Sorry, this page is not here. It may have moved, or the address may have a typo.</p>' +
-      '<p><a class="btn" href="/p/products.html">See all spare parts</a> <a class="btn" href="/p/get-quote.html">Get a quote</a> <a class="btn btn-wa" data-wa-text="photo" href="#">' + ICON_WA + ' Ask on WhatsApp</a></p>' +
-      '<p><a href="/">Home</a> · <a href="/p/contact-us.html">Contact us</a></p>';
+    var tile = function (href, title, sub) { return '<a class="nf-tile" href="' + href + '"><b>' + title + '</b><span>' + sub + '</span>' + ICON_ARROW + '</a>'; };
+    box.innerHTML = '<div class="nf-card"><div class="nf-code" aria-hidden="true">404</div>' +
+      '<h2>We couldn’t find that page</h2>' +
+      '<p>The link may be old, or the address may have a typo. Search for the part you need, or pick a section below.</p>' +
+      '<form class="nf-search" action="/p/products.html" role="search"><label class="cat-search">' + ICON_SEARCH +
+      '<input type="search" name="q" placeholder="Search parts, e.g. gear cover, U bolt" aria-label="Search parts"></label>' +
+      '<button class="btn btn-navy" type="submit">Search</button></form>' +
+      '<div class="nf-acts"><a class="btn btn-amber" href="/p/get-quote.html">Get a quote</a>' +
+      '<a class="btn btn-wa" data-wa-text="photo" href="#">' + ICON_WA + ' Ask on WhatsApp</a></div></div>' +
+      '<div class="nf-tiles">' + tile('/p/products.html', 'Spare parts', 'Every part with photos') + tile('/p/brands.html', 'Brands', 'Makes we stock parts for') +
+      tile('/p/about-us.html', 'About us', 'Who we are') + tile('/p/contact-us.html', 'Contact us', 'Call, email or visit') + '</div>';
     blog.appendChild(box);
     waLinks(box);
   })();
