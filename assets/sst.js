@@ -787,7 +787,14 @@
     var header = a.closest('header') || box, t = 0;
     function fit() {
       a.style.display = '';
-      if (document.documentElement.scrollWidth > innerWidth + 1 || header.scrollWidth > header.clientWidth + 1 || box.scrollWidth > box.clientWidth + 1) a.style.display = 'none';
+      if (document.documentElement.scrollWidth > innerWidth + 1 || header.scrollWidth > header.clientWidth + 1 || box.scrollWidth > box.clientWidth + 1 || hitsBrand()) a.style.display = 'none';
+    }
+    // the shop name doesn't wrap, so on a narrow phone it can run under the button without making the header overflow
+    function hitsBrand() {
+      var left = a.getBoundingClientRect().left;
+      return [].some.call(header.querySelectorAll('.brand-name, .brand-tag, .brand-text'), function (el) {
+        return el.getBoundingClientRect().left + el.scrollWidth > left - 6;
+      });
     }
     fit(); setTimeout(fit, 1500);
     addEventListener('resize', function () { clearTimeout(t); t = setTimeout(fit, 150); });
