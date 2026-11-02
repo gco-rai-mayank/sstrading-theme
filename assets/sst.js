@@ -531,6 +531,7 @@
     $$('.brand-track .bt img').forEach(function (img) {
       function gone() { var a = img.closest('.bt'); if (a && a.parentNode) a.parentNode.removeChild(a); }
       if (img.complete && !img.naturalWidth) gone(); else img.addEventListener('error', gone);
+      img.loading = 'eager';   // small logos: check them now, not when the strip scrolls into view
     });
 
     /* mobile menu */
