@@ -370,7 +370,8 @@ window.SST_LANG = {
     "Parts also for": ["इनके पार्ट्स भी:", "ਇਹਨਾਂ ਦੇ ਪਾਰਟਸ ਵੀ:"],
     "and": ["और", "ਅਤੇ"],
     "rotavators.": ["रोटावेटर।", "ਰੋਟਾਵੇਟਰ।"],
-    "See all 16 brands": ["सारे 16 ब्रांड्स देखें", "ਸਾਰੇ 16 ਬ੍ਰਾਂਡ ਵੇਖੋ"],
+    "See all 15 brands": ["सारे 15 ब्रांड्स देखें", "ਸਾਰੇ 15 ਬ੍ਰਾਂਡ ਵੇਖੋ"],
+    "See all 16 brands": ["सारे 15 ब्रांड्स देखें", "ਸਾਰੇ 15 ਬ੍ਰਾਂਡ ਵੇਖੋ"],   // older uploaded theme text, until the theme is uploaded again
     /* help panel and tour */
     'Help': ['मदद', 'ਮਦਦ'],
     '▶ Show me how this page works': ['▶ यह पेज कैसे चलाएं, दिखाएं', '▶ ਇਹ ਪੇਜ ਕਿਵੇਂ ਵਰਤੀਏ, ਵਿਖਾਓ'],

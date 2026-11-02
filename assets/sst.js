@@ -527,6 +527,12 @@
     waLinks();
     $$('[data-sst-quote]').forEach(quoteForm);
 
+    /* brand strip: drop a brand whose logo was removed from assets/brands (the uploaded theme may still list it) */
+    $$('.brand-track .bt img').forEach(function (img) {
+      function gone() { var a = img.closest('.bt'); if (a && a.parentNode) a.parentNode.removeChild(a); }
+      if (img.complete && !img.naturalWidth) gone(); else img.addEventListener('error', gone);
+    });
+
     /* mobile menu */
     var tog = $('.nav-toggle'), nav = $('.nav');
     if (tog && nav) {
