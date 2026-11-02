@@ -724,7 +724,7 @@ html[lang=hi] :is(.eyebrow,.hc-tag,.site-footer h4,.chip,.btn),html[lang=pa] :is
 button,input,select,textarea,optgroup{font-family:inherit}
 
 /* 320 px phones: hero text wraps inside the screen (grid items may shrink; long eyebrow wraps) */
-.hero .container>*{min-width:0}
+.hero .container>*,.split>*{min-width:0}
 @media (max-width:380px){.hero .eyebrow{display:flex;flex-wrap:wrap;line-height:1.3;letter-spacing:1px}}
 /* while a form field is being filled on a phone, the floating Help button steps aside */
 @media (max-width:760px){.is-typing .help-btn,.is-typing .help-panel{display:none}}
