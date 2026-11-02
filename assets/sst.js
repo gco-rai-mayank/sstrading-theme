@@ -423,11 +423,32 @@
     $('.help-close', panel).addEventListener('click', function () { toggle(false); });
     var t = $('[data-tour]', panel);
     if (t) t.addEventListener('click', function () { toggle(false); tour(kind); });
-    /* first visit: show the tour once */
+    /* first visit: show the tour once (not on the quote form, where it would cover the fields; "Show me how" still starts it) */
     var seen = null;
     try { seen = localStorage.getItem('sst-tour-' + kind); } catch (e) { seen = '1'; }
-    if (TOURS[kind] && !seen) setTimeout(function () { tour(kind); }, 1500);
+    if (TOURS[kind] && !seen && kind !== 'quote') setTimeout(function () { tour(kind); }, 1500);
+    /* while typing in a form field on a phone, the floating Help button steps aside so it never covers a label */
+    document.addEventListener('focusin', function (e) { if (e.target.matches && e.target.matches('input,textarea,select')) document.body.classList.add('is-typing'); });
+    document.addEventListener('focusout', function () { document.body.classList.remove('is-typing'); });
   }
+
+  /* ---- Page not found: Blogger shows an empty list (older uploaded themes also title it with the shop name) ---- */
+  (function () {
+    var b = document.body, blog = $('#Blog1');
+    if (!b.classList.contains('is-list') || !blog || blog.textContent.trim() || /^\/search/.test(location.pathname)) return;
+    b.classList.add('is-error');
+    var h1 = $('.page-hero h1'), cr = $('.page-hero .crumbs');
+    if (h1) h1.textContent = 'Page not found';
+    if (cr) cr.innerHTML = '<a href="/">Home</a> &#8250; Page not found';
+    document.title = 'Page Not Found | ' + NAME;
+    var box = document.createElement('div');
+    box.className = 'not-found';
+    box.innerHTML = '<p>Sorry, this page is not here. It may have moved, or the address may have a typo.</p>' +
+      '<p><a class="btn" href="/p/products.html">See all spare parts</a> <a class="btn" href="/p/get-quote.html">Get a quote</a> <a class="btn btn-wa" data-wa-text="photo" href="#">' + ICON_WA + ' Ask on WhatsApp</a></p>' +
+      '<p><a href="/">Home</a> · <a href="/p/contact-us.html">Contact us</a></p>';
+    blog.appendChild(box);
+    waLinks(box);
+  })();
 
   /* ---- Language: English, Hindi or Punjabi. Our own everyday wording is in sst-lang.js,
      loaded only when a visitor picks हिंदी or ਪੰਜਾਬੀ; the choice is remembered on this device. ---- */
